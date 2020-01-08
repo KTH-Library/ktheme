@@ -23,20 +23,6 @@ library(tidyverse)
 update_geom_font_defaults(font_os)
 ```
 
-This is an R package providing some styling resources for web content. It is heavily inspired from https://github.com/hrbrmstr/hrbrthemes. It includes two fonts used in the graphical profile of KTH:
-
-- Open Sans (primary font for web content)
-- Georgia
-
-# Content
-
-This package installs a number of styling assets:
-
-- Two templates for styling `rmarkdown` authoring - one for HTML content and one for PDF output. The HTML template uses stylesheet (CSS file) harvested from www.kth.se as of 2020-01-08.
-
-- It also provides a `theme_kth()` function which can be used to style ggplots.
-
-- Finally, there is a set of color palette based on the five KTH signature colors (three color palettes for qualitative, sequential and diverging data respectively).
 
 This is an example plot and how a plot can look like using the `theme_kth()`:
 
