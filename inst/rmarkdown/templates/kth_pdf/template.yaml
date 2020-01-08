@@ -1,0 +1,4 @@
+name: kth PDF Template
+description: >
+  R Markdown template for the graphical profile of KTH
+create_dir: false

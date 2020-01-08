@@ -1,0 +1,60 @@
+---
+title: "KTH Theme for R"
+kth_meta:
+  twitter_card: "Summary info for the Twitter Card"
+twitter_site: "\\@sitehandle"
+twitter_creator: "\\@creatorhandle"
+og_url: "https\\://example.com/open/graph/finalURLfor/this"
+og_description: "A modest size description of the content"
+og_image: "https\\://example.com/open/graph/imageURLfor/this"
+output:
+  ktheme::kth:
+  toc: true
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(fig.retina=2)
+```
+
+```{r kth_setup, message=FALSE, warning=FALSE, cache=FALSE, echo=FALSE}
+library(ktheme)
+library(tidyverse)
+
+update_geom_font_defaults(font_os)
+```
+
+This is an R package providing some styling resources for web content. It is heavily inspired from https://github.com/hrbrmstr/hrbrthemes. It includes two fonts used in the graphical profile of KTH:
+
+- Open Sans (primary font for web content)
+- Georgia
+
+# Content
+
+This package installs a number of styling assets:
+
+- Two templates for styling `rmarkdown` authoring - one for HTML content and one for PDF output. The HTML template uses stylesheet (CSS file) harvested from www.kth.se as of 2020-01-08.
+
+- It also provides a `theme_kth()` function which can be used to style ggplots.
+
+- Finally, there is a set of color palette based on the five KTH signature colors (three color palettes for qualitative, sequential and diverging data respectively).
+
+This is an example plot and how a plot can look like using the `theme_kth()`:
+
+## Figure
+
+```{r, fig.show='hold', message=FALSE, echo=FALSE}
+
+suppressPackageStartupMessages(library(bibliomatrix))
+
+data <- abm_table4()
+
+abm_graph_jcf(data) + theme_kth(grid = "XY")
+
+```
+
+
+```{r bib, include=FALSE}
+# KEEP THIS AT THE END OF THE DOCUMENT TO GENERATE A LOCAL bib FILE FOR PKGS USED
+knitr::write_bib(sub("^package:", "", grep("package", search(), value=TRUE)), file='skeleton.bib')
+```
+

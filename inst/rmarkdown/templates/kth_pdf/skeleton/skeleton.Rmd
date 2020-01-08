@@ -1,0 +1,36 @@
+---
+title: "Using ktheme in PDFs"
+output: ktheme::kth_pdf
+---
+
+  ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,  dev = "cairo_pdf")
+```
+
+# Purpose
+
+The purpose of this template is to show what you need to do in order to use
+Open Sans in PDF output documents.
+
+The main consideration is the use of `Cairo` and --- specifically -- the `cairo_pdf`
+output device. It is best to set that in the `knit` chunk defaults (as seen in
+the `setup` block) but you can also do that in the individual chunks as has also been
+demonstrated in the "Roboto Condensed" chunk.
+
+Make sure to include the library calls as they are here.
+
+```{r message = FALSE}
+library(ktheme)
+library(ggplot2)
+library(Cairo)
+library(extrafont)
+
+extrafont::loadfonts()
+```
+
+```{r}
+ggplot(mtcars, aes(wt, mpg)) +
+  geom_point() +
+  labs(title="Main Title", subtitle="This is a subtitle") +
+  theme_kth()
+```
