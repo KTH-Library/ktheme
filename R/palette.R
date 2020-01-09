@@ -18,7 +18,7 @@
 #' library(scales)
 #' alpha(palette_kth(), 0.4)  # return light signature colors (40 % alpha)
 #' show_col(alpha(palette_kth(), 0.8))  # return medium light 80% alpha palette
-palette_kth <- function(n = 5, name = "KTH", type = c("qual", "seq", "div")) {
+palette_kth <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
 
   if (name != "KTH")
     stop("Please use RColorBrewer::brewer.pal() for non-KTH palettes")
@@ -53,7 +53,7 @@ palette_kth <- function(n = 5, name = "KTH", type = c("qual", "seq", "div")) {
     div = ifelse(n %in% 1:7, p <- div[1:n], stop("max 7 diverging colors are available"))
   )
 
-  print(p)
+  p
 
 }
 
@@ -82,7 +82,9 @@ palette_kth_info <- function() {
 #' library(scales)
 #' scales::show_col(kth_pal()(5))
 kth_pal <- function() {
-  manual_pal(palette_kth())
+  pal <- palette_kth()
+  names(pal) <- NULL
+  manual_pal(pal)
 }
 
 #' Discrete color & fill scales based on the KTH palette

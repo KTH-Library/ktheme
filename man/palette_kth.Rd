@@ -4,7 +4,7 @@
 \alias{palette_kth}
 \title{KTH color palette with 5 qualitative colors}
 \usage{
-palette_kth(n = 5, name = "KTH", type = c("qual", "seq", "div"))
+palette_kth(n = 10, name = "KTH", type = c("qual", "seq", "div"))
 }
 \arguments{
 \item{n}{number of colors to use (1..5), default is to return all five}
