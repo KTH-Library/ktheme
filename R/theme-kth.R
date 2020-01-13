@@ -156,3 +156,15 @@ update_geom_font_defaults <- function(family="Open Sans", face="plain", size=3.5
   update_geom_defaults("label", list(family=family, face=face, size=size, color=color))
 }
 
+#' A [ggplot2] theme with default for the KTH graphical profile using the Narrow or Condensed
+#' version of Open Sans.
+#' @param base_family base font family and size
+#' @param plot_title_family plot title family
+#' @inheritDotParams theme_kth
+#' @export
+theme_kth_osc <- function(
+  base_family="Open Sans Condensed",
+  plot_title_family="Open Sans Condensed", ...)
+{
+    theme_kth(base_family = base_family, plot_title_family = plot_title_family, ...)
+}

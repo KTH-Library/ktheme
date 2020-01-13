@@ -196,6 +196,39 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
+A narrow or condensed variant of Open Sans is available.
+
+``` r
+#update_geom_font_defaults(family=font_osc)
+#import_open_sans_condensed()
+#extrafont::loadfonts()
+
+# library(readr)
+# ft <- read_csv(system.file("fontmap", "fonttable.csv", package="extrafontdb"))
+# regular_osc <- ft %>% filter(FamilyName == "Open Sans Condensed") %>% head(1)
+# regular_osc$FullName <- "Open Sans Condensed"
+# regular_osc$Bold <- FALSE
+# ft_new <- bind_rows(ft, regular_osc)
+# write_csv(ft_new, path = system.file("fontmap", "fonttable.csv", package="extrafontdb"))
+
+library(dplyr)
+library(ggplot2)
+
+count(mpg, class) %>%
+ggplot(aes(class, n)) +
+geom_col(aes(fill = class)) +
+geom_text(aes(label=paste0("n=", n)), nudge_y=3) +
+labs(x="Vehicle category", y="Observations (n)",
+     title="Seminal ggplot2 bar chart example",
+     subtitle="A plot that is only useful for demonstration purposes",
+     caption="A demo of theme_kth_osc") +
+theme_kth_osc() +
+scale_fill_kth() +
+theme(axis.text.y=element_blank())
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+
 Examples of customized ggplots used in the R package `bibliomatrix`:
 
 ``` r
@@ -223,7 +256,7 @@ abm_bullet(label = "Field normalized citations (Cf)",
     )
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 ``` r
 nonuniv_share <- 
@@ -243,4 +276,4 @@ abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
   )
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
