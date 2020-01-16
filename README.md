@@ -26,27 +26,37 @@ This package installs various styling assets as outlined below.
 
 ### Fonts
 
-It includes two fonts used in the graphical profile of KTH:
+It includes fonts in the two main font families used in the graphical
+profile of KTH:
 
   - Open Sans (primary font; to be used for web content and for text
     inside plots)
   - Georgia (KTH has a license to use this MS font)
+  - Open Sans Condensed is a narrow variant of Open Sans (looks even
+    better in plots)
 
 ### Templates for rmarkdown content
 
 Two templates are provided for styling `rmarkdown` authored content:
 
-  - one for general HTML content
-  - one for PDF output.
-
-### CSS
+  - one for general HTML content with the KTH CSS styles
+  - one for PDF output
 
 The HTML template uses a stylesheet (CSS file) harvested from
-<https://www.kth.se> on 2020-01-08.
+<https://www.kth.se> on 2020-01-08 from
+<https://www.kth.se/css/kth-1e5baeb8f6b53eb2cc1503b719827966.css> which
+has been “cleaned” or “beautified” with
+<https://www.cleancss.com/css-beautify/>.
 
 This stylesheet is fairly long and refers to some online images and
-assets, so the rendering step requires some patience due to the lag when
-the online assets are pulled in from the web.
+assets using relative paths, which has been modified (into using HTTP
+scheme-agnostic urls with absolute paths like
+`//www.kth.se/img/kth-style/icons/alert-info-d5989d78df9dec269a3bfa93b36e18e3.svg`.
+
+This makes it possible to use the CSS when rendering rmarkdown content
+into standalone HTML, but currently the rendering step requires some
+patience due to the lag when the online assets are pulled in from the
+web.
 
 ### Theme for ggplot2
 
@@ -87,20 +97,25 @@ devtools::install_github("KTH-Library/ktheme")
 
 ## Usage
 
-Here are usage examples showing plots made using the different KTH color
-palettes and the Open Sans font.
+A helper function is availble for system-wide install of fonts on Linux
+OSes:
 
 ``` r
 # install from https://github.com/KTH-Library/bibliomatrix
-suppressPackageStartupMessages(library(bibliomatrix))  
-library(dplyr)
 library(ktheme)
+install_fonts_linux()
+
+library(extrafont)
+extrafont::loadfonts()
+
+# required in the following usage examples 
+library(dplyr)
 library(ggplot2)
 library(Cairo)
-library(extrafont)
-
-extrafont::loadfonts()
 ```
+
+Here are usage examples showing plots made using the different KTH color
+palettes and the Open Sans font.
 
 A plain vanilla scatter plot:
 
@@ -232,6 +247,8 @@ theme(axis.text.y=element_blank())
 Examples of customized ggplots used in the R package `bibliomatrix`:
 
 ``` r
+
+suppressPackageStartupMessages(library(bibliomatrix))  
 
 # using bibliomatrix::abm_table fcn to get some data
 cf <- abm_table3() %>% filter(interval == "Total") %>% pull(cf)
