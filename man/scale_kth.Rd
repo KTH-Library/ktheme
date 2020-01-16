@@ -55,7 +55,7 @@ where \code{NA} is always placed at the far right.}
 The default, \code{TRUE}, uses the levels that appear in the data;
 \code{FALSE} uses all the levels in the factor.}
     \item{\code{guide}}{A function used to create a guide or its name. See
-\code{\link[=guides]{guides()}} for more info.}
+\code{\link[ggplot2:guides]{guides()}} for more info.}
     \item{\code{super}}{The super class to use for the constructed scale}
   }}
 }
