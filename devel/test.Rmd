@@ -32,7 +32,7 @@ This is an example plot and how a plot can look like using the `theme_kth()`:
 
 suppressPackageStartupMessages(library(bibliomatrix))
 
-data <- abm_table4()
+data <- abm_public_kth$units$KTH[[4]]
 
 abm_graph_jcf(data) + theme_kth(grid = "XY")
 
