@@ -79,7 +79,8 @@ A helper function is availble for system-wide install of fonts on Linux OSes:
 ```{r message = FALSE}
 # install from https://github.com/KTH-Library/bibliomatrix
 library(ktheme)
-install_fonts_linux()
+if(Sys.info()["sysname"] == "Linux")
+  install_fonts_linux()
 
 library(extrafont)
 extrafont::loadfonts()

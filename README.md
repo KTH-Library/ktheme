@@ -103,7 +103,8 @@ OSes:
 ``` r
 # install from https://github.com/KTH-Library/bibliomatrix
 library(ktheme)
-install_fonts_linux()
+if(Sys.info()["sysname"] == "Linux")
+  install_fonts_linux()
 
 library(extrafont)
 extrafont::loadfonts()
@@ -250,8 +251,8 @@ Examples of customized ggplots used in the R package `bibliomatrix`:
 
 suppressPackageStartupMessages(library(bibliomatrix))  
 
-# using bibliomatrix::abm_table fcn to get some data
-cf <- abm_table3() %>% filter(interval == "Total") %>% pull(cf)
+# Fetching som data from bibliomatrix::abm_public_kth
+cf <- abm_public_kth$units$KTH[[3]] %>% filter(interval == "Total") %>% pull(cf)
 
 # this is a ggplot2-based bullet graph
 abm_bullet(label = "Field normalized citations (Cf)", 
@@ -277,7 +278,7 @@ abm_bullet(label = "Field normalized citations (Cf)",
 
 ``` r
 nonuniv_share <- 
-  abm_table5() %>% filter(interval == "Total") %>% pull(nonuniv_share)
+  abm_public_kth$units$KTH[[5]] %>% filter(interval == "Total") %>% pull(nonuniv_share)
 
 nonuniv_lbl <- 
   sprintf("Swedish non-university: %d%%", round(100 * nonuniv_share))
