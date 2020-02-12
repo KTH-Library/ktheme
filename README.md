@@ -129,7 +129,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   theme_kth()
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
 
 Using the KTH palette, qualitative coloring:
 
@@ -142,7 +142,7 @@ ggplot(iris, aes(Species, Sepal.Length)) +
   theme(legend.position = "top")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
 
 ``` r
 
@@ -153,7 +153,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
   theme(legend.position = "top")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-2.png" width="100%" />
+![](man/figures/README-unnamed-chunk-4-2.png)<!-- -->
 
 Another example using demo data:
 
@@ -178,7 +178,7 @@ flush_ticks(gg)
 #> theme(axis.text.y=element_text(vjust=c(0, rep(0.5, 3), 1)))
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
 
 Diverging colors:
 
@@ -209,7 +209,36 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
   coord_flip()
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-6-1.png)<!-- --> Sequential
+discrete colors versus qualitative discrete colors:
+
+``` r
+library(patchwork)
+
+pdiv <- rev(tolower(palette_kth(n = 5, type = "seq") %>% setNames(NULL)))
+dsamp <- diamonds[1 + 1:1000 * 50, ]
+
+gg <- ggplot(dsamp, aes(carat, price, color = cut)) + geom_point()
+
+gg1 <- gg + scale_color_manual(values = pdiv) + theme_kth() + scale_y_comma()
+
+gg2 <- gg + scale_color_kth() + theme_kth() + scale_y_comma()
+
+gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + theme_kth() + scale_y_comma() + theme(legend.position="bottom")
+
+gg1 + gg2
+```
+
+![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+
+In this case it might be better to use small multiples (like below) or
+another type of visual.
+
+``` r
+gg3
+```
+
+![](man/figures/README-unnamed-chunk-8-1.png)<!-- -->
 
 A narrow or condensed variant of Open Sans is available.
 
@@ -242,19 +271,23 @@ scale_fill_kth() +
 theme(axis.text.y=element_blank())
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
 
 Examples of customized ggplots used in the R package `bibliomatrix`:
 
 ``` r
 
+library(dplyr)
+library(patchwork)
 suppressPackageStartupMessages(library(bibliomatrix))  
 
 # using bibliomatrix::abm_table fcn to get some data
-cf <- abm_table3() %>% filter(interval == "Total") %>% pull(cf)
+con <- con_bib("sqlite")
+cf <- abm_table3(con, unit_code = "KTH", analysis_start = 2013, analysis_stop = 2018) %>% filter(interval == "Total") %>% pull(cf)
+DBI::dbDisconnect(con)
 
 # this is a ggplot2-based bullet graph
-abm_bullet(label = "Field normalized citations (Cf)", 
+p1 <- abm_bullet(label = "Field normalized citations (Cf)", 
   value = cf, reference = 1.0, roundto = 2) + 
     theme_kth() + 
     # override some theme settings
@@ -268,22 +301,21 @@ abm_bullet(label = "Field normalized citations (Cf)",
       axis.text.y=element_blank(),
       axis.ticks.x=element_blank(),
       panel.grid.major=element_blank(),
-      panel.grid.minor=element_blank(),
-      aspect.ratio = 0.1
+      panel.grid.minor=element_blank()
     )
-```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+con <- con_bib()
 
-``` r
 nonuniv_share <- 
-  abm_table5() %>% filter(interval == "Total") %>% pull(nonuniv_share)
+  abm_table5(con, unit_code = "KTH") %>% filter(interval == "Total") %>% pull(nonuniv_share)
+
+DBI::dbDisconnect(con)
 
 nonuniv_lbl <- 
   sprintf("Swedish non-university: %d%%", round(100 * nonuniv_share))
 
 # this is a ggplot2-based waffle chart
-abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
+p2 <- abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
   theme_kth() + 
   # override some theme settings
   theme(
@@ -291,6 +323,8 @@ abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
     axis.text.x=element_blank(),
     legend.position="none",
   )
+
+p1 + p2
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-10-1.png)<!-- -->

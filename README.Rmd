@@ -8,8 +8,8 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.path = "man/figures/README-"#,
+ # out.width = "100%"
 )
 ```
 
@@ -175,6 +175,32 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
   coord_flip()
 
 ```
+Sequential discrete colors versus qualitative discrete colors:
+
+```{r, fig.height=7}
+library(patchwork)
+
+pdiv <- rev(tolower(palette_kth(n = 5, type = "seq") %>% setNames(NULL)))
+dsamp <- diamonds[1 + 1:1000 * 50, ]
+
+gg <- ggplot(dsamp, aes(carat, price, color = cut)) + geom_point()
+
+gg1 <- gg + scale_color_manual(values = pdiv) + theme_kth() + scale_y_comma()
+
+gg2 <- gg + scale_color_kth() + theme_kth() + scale_y_comma()
+
+gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + theme_kth() + scale_y_comma() + theme(legend.position="bottom")
+
+gg1 + gg2
+
+```
+
+In this case it might be better to use small multiples (like below) or another type of visual.
+
+```{r, fig.width=10}
+gg3
+```
+
 
 A narrow or condensed variant of Open Sans is available.
 
@@ -211,13 +237,17 @@ Examples of customized ggplots used in the R package `bibliomatrix`:
 
 ```{r}
 
+library(dplyr)
+library(patchwork)
 suppressPackageStartupMessages(library(bibliomatrix))  
 
 # using bibliomatrix::abm_table fcn to get some data
-cf <- abm_table3() %>% filter(interval == "Total") %>% pull(cf)
+con <- con_bib("sqlite")
+cf <- abm_table3(con, unit_code = "KTH", analysis_start = 2013, analysis_stop = 2018) %>% filter(interval == "Total") %>% pull(cf)
+DBI::dbDisconnect(con)
 
 # this is a ggplot2-based bullet graph
-abm_bullet(label = "Field normalized citations (Cf)", 
+p1 <- abm_bullet(label = "Field normalized citations (Cf)", 
   value = cf, reference = 1.0, roundto = 2) + 
     theme_kth() + 
     # override some theme settings
@@ -231,21 +261,21 @@ abm_bullet(label = "Field normalized citations (Cf)",
       axis.text.y=element_blank(),
       axis.ticks.x=element_blank(),
       panel.grid.major=element_blank(),
-      panel.grid.minor=element_blank(),
-      aspect.ratio = 0.1
+      panel.grid.minor=element_blank()
     )
 
-```
+con <- con_bib()
 
-```{r}
 nonuniv_share <- 
-  abm_table5() %>% filter(interval == "Total") %>% pull(nonuniv_share)
+  abm_table5(con, unit_code = "KTH") %>% filter(interval == "Total") %>% pull(nonuniv_share)
+
+DBI::dbDisconnect(con)
 
 nonuniv_lbl <- 
   sprintf("Swedish non-university: %d%%", round(100 * nonuniv_share))
 
 # this is a ggplot2-based waffle chart
-abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
+p2 <- abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
   theme_kth() + 
   # override some theme settings
   theme(
@@ -253,5 +283,8 @@ abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
     axis.text.x=element_blank(),
     legend.position="none",
   )
+
+p1 + p2
 ```
+
 
