@@ -10,8 +10,9 @@
 #' sequential or "div" for diverging
 #' @return named vector with colors and hex codes
 #' @importFrom grDevices rgb
-#' @importFrom scales alpha show_col
+#' @importFrom scales alpha show_col seq_gradient_pal
 #' @importFrom stats setNames
+#' @importFrom purrr map_chr
 #' @export
 #' @examples
 #' palette_kth(1)  # return the primary color in the KTH palette
@@ -31,16 +32,26 @@ palette_kth <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
     gray = rgb(101, 101, 108, maxColorValue = 256)
   )
 
-  p80 <- alpha(p100, 0.8)
-  p80 <- setNames(p80, paste0(names(p100), "80"))
+  ftg <- function(cols, pct) {
+    stopifnot(pct %in% c(100, 80, 60, 40, 20, 0))
+    steps <- seq(0, 1, length.out = 6)
+    fade_to_gray <- function(col) seq_gradient_pal(col, "gray95")(steps)
+    step <- (100 - pct) / 100
+    i <- which(as.character(step) == as.character(steps))
+    res <- purrr::map_chr(cols, function(x) fade_to_gray(x)[i])
+    setNames(res, paste0(names(res), pct))
+  }
 
-  p40 <- alpha(p100, 0.4)
-  p40 <- setNames(p40, paste0(names(p100), "40"))
+  p80 <- ftg(p100, 80) #alpha(p100, 0.8)
+  #p80 <- setNames(p80, paste0(names(p100), "80"))
+
+  p40 <- ftg(p100, 40) #alpha(p100, 0.4)
+  #p40 <- setNames(p40, paste0(names(p100), "40"))
 
   qual <- c(p100, p40, p80)
 
-  seq <- c(qual["blue"], qual["blue80"], alpha(qual["blue"], 0.60),
-    qual["blue40"], alpha(qual["blue40"], 0.20))
+  seq <- c(qual["blue"], qual["blue80"], ftg(qual["blue"], 60),
+    qual["blue40"], ftg(qual["blue40"], 20))
   seq <- setNames(seq, paste0("blue", 1:5))
 
   div <- c(seq[1:3], qual["gray40"],
