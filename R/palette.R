@@ -1,3 +1,23 @@
+#' Fade color towards light grey, reducing its intensity
+#'
+#' @param cols vector of rgb codes for colors
+#' @param pct percentage value (100, 80, 60, 40, 20 or 0)
+#' @importFrom scales show_col seq_gradient_pal
+#' @importFrom stats setNames
+#' @importFrom purrr map_chr
+#' @examples
+#' ftg(palette_kth()["blue"], 80)  # fade KTH blue to 80% intensity towards light gray
+#' @noRd
+ftg <- function(cols, pct) {
+  stopifnot(pct %in% c(100, 80, 60, 40, 20, 0))
+  steps <- seq(0, 1, length.out = 6)
+  fade_to_gray <- function(col) seq_gradient_pal(col, "gray95")(steps)
+  step <- (100 - pct) / 100
+  i <- which(as.character(step) == as.character(steps))
+  res <- purrr::map_chr(cols, function(x) fade_to_gray(x)[i])
+  setNames(res, paste0(names(res), pct))
+}
+
 #' KTH color palette with 5 qualitative colors
 #'
 #' This palette is taken from https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profilfarger-1.845077
@@ -32,15 +52,7 @@ palette_kth <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
     gray = rgb(101, 101, 108, maxColorValue = 256)
   )
 
-  ftg <- function(cols, pct) {
-    stopifnot(pct %in% c(100, 80, 60, 40, 20, 0))
-    steps <- seq(0, 1, length.out = 6)
-    fade_to_gray <- function(col) seq_gradient_pal(col, "gray95")(steps)
-    step <- (100 - pct) / 100
-    i <- which(as.character(step) == as.character(steps))
-    res <- purrr::map_chr(cols, function(x) fade_to_gray(x)[i])
-    setNames(res, paste0(names(res), pct))
-  }
+
 
   p80 <- ftg(p100, 80) #alpha(p100, 0.8)
   #p80 <- setNames(p80, paste0(names(p100), "80"))
