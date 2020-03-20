@@ -44,12 +44,6 @@ Two templates are provided for styling `rmarkdown` authored content:
 - one for general HTML content with the KTH CSS styles 
 - one for PDF output
 
-The HTML template uses a stylesheet (CSS file) harvested from https://www.kth.se on 2020-01-08 from https://www.kth.se/css/kth-1e5baeb8f6b53eb2cc1503b719827966.css which has been "cleaned" or "beautified" with https://www.cleancss.com/css-beautify/.
-
-This stylesheet is fairly long and refers to some online images and assets using relative paths, which has been modified (into using HTTP scheme-agnostic urls with absolute paths like `//www.kth.se/img/kth-style/icons/alert-info-d5989d78df9dec269a3bfa93b36e18e3.svg`. 
-
-This makes it possible to use the CSS when rendering rmarkdown content into standalone HTML, but currently the rendering step requires some patience due to the lag when the online assets are pulled in from the web.
-
 ### Theme for ggplot2
 
 It also provides a `theme_kth()` function which can be used to style ggplots.
@@ -80,7 +74,8 @@ A helper function is availble for system-wide install of fonts on Linux OSes:
 ```{r message = FALSE}
 # install from https://github.com/KTH-Library/bibliomatrix
 library(ktheme)
-install_fonts_linux()
+if(Sys.info()["sysname"] == "Linux")
+  install_fonts_linux()
 
 library(extrafont)
 extrafont::loadfonts()
@@ -242,13 +237,12 @@ library(dplyr)
 library(patchwork)
 suppressPackageStartupMessages(library(bibliomatrix))  
 
-# using bibliomatrix::abm_table fcn to get some data
-con <- con_bib("sqlite")
-cf <- abm_table3(con, unit_code = "KTH", analysis_start = 2013, analysis_stop = 2018) %>% filter(interval == "Total") %>% pull(cf)
-DBI::dbDisconnect(con)
+# Fetching som data from bibliomatrix::abm_public_kth
+cf <- abm_public_kth$units$KTH[[3]] %>% filter(interval == "Total") %>% pull(cf)
 
 # this is a ggplot2-based bullet graph
-p1 <- abm_bullet(label = "Field normalized citations (Cf)", 
+p1 <- 
+  abm_bullet(label = "Field normalized citations (Cf)", 
   value = cf, reference = 1.0, roundto = 2) + 
     theme_kth() + 
     # override some theme settings
@@ -265,12 +259,11 @@ p1 <- abm_bullet(label = "Field normalized citations (Cf)",
       panel.grid.minor=element_blank()
     )
 
-con <- con_bib()
+```
 
+```{r}
 nonuniv_share <- 
-  abm_table5(con, unit_code = "KTH") %>% filter(interval == "Total") %>% pull(nonuniv_share)
-
-DBI::dbDisconnect(con)
+  abm_public_kth$units$KTH[[5]] %>% filter(interval == "Total") %>% pull(nonuniv_share)
 
 nonuniv_lbl <- 
   sprintf("Swedish non-university: %d%%", round(100 * nonuniv_share))
@@ -282,10 +275,34 @@ p2 <- abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
   theme(
     axis.text.y=element_blank(),
     axis.text.x=element_blank(),
-    legend.position="none",
+    legend.position="none"
   )
 
 p1 + p2
-```
 
+
+# this is a pie - saved for last, the dessert
+
+df <- data.frame(
+  group = c("Male", "Female", "Child"),
+  value = c(25, 25, 50)
+  )
+
+pie <-
+  ggplot(df, aes(x = "", y = value, fill = group)) +
+  geom_bar(width = 1, stat = "identity") +
+  coord_polar("y", start = 0) +
+  scale_fill_manual(values = unname(ktheme::palette_kth()), guide = FALSE) +
+  theme_kth_osc() + theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.border = element_blank(),
+    panel.grid = element_blank(),
+    axis.ticks = element_blank() 
+  ) +
+  geom_text(aes(y = value / 3 + c(0, cumsum(value)[-length(value)]), 
+    label = sprintf("%s\n(%s)", group, scales::percent(value / 100))), size = 5)
+
+pie
+```
 
