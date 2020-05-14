@@ -55,7 +55,7 @@ theme_kth <- function(base_family="Open Sans", base_size = 11.5,
                         axis_text_size = base_size,
                         axis_title_family = subtitle_family, axis_title_size = 9,
                         axis_title_face = "plain", axis_title_just = "rt",
-                        plot_margin = margin(30, 30, 30, 30),
+                        plot_margin = margin(5.5, 5.5, 5.5, 5.5),
                         grid_col = "#cccccc", grid = TRUE,
                         axis_col = "#cccccc", axis = FALSE, ticks = FALSE) {
 
