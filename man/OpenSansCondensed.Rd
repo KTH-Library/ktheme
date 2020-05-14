@@ -4,7 +4,9 @@
 \name{font_osc}
 \alias{font_osc}
 \title{Open Sans font name R variable aliases}
-\format{length 1 character vector}
+\format{
+length 1 character vector
+}
 \usage{
 font_osc
 }

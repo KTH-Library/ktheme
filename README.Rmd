@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # ktheme
 
 <!-- badges: start -->
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle: experimental](https://raster.shields.io/badge/lifecycle-experimental-orange.png)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 This is an R package providing some styling resources for web content intended to align with the graphical profile used at KTH - the Royal Institue of Technology. 

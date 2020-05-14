@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://raster.shields.io/badge/lifecycle-experimental-orange.png)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 This is an R package providing some styling resources for web content
@@ -161,6 +161,11 @@ ggplot(mpg, aes(displ, hwy)) +
   theme(legend.position="none") -> gg
 
 flush_ticks(gg)
+#> Warning: Vectorized input to `element_text()` is not officially supported.
+#> Results may be unexpected or may change in future versions of ggplot2.
+
+#> Warning: Vectorized input to `element_text()` is not officially supported.
+#> Results may be unexpected or may change in future versions of ggplot2.
 #> theme(axis.text.x=element_text(hjust=c(0, rep(0.5, 6), 1))) +
 #> theme(axis.text.y=element_text(vjust=c(0, rep(0.5, 3), 1)))
 ```

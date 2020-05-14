@@ -1,7 +1,7 @@
 Package: ktheme
 Type: Package
 Title: KTH Profile Theme For 'ggplot2'
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
     as.person(c(
         "Gaël Serge Dubus <dubus@kth.se> [aut]", 
@@ -38,5 +38,5 @@ Imports:
     magrittr,
     gdtools,
     purrr
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
