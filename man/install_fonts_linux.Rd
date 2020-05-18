@@ -2,10 +2,14 @@
 % Please edit documentation in R/font-install.R
 \name{install_fonts_linux}
 \alias{install_fonts_linux}
-\title{Import fonts in the ktheme package system-wide (on Linux)}
+\title{Import fonts in the ktheme package user-wide or system-wide (on Linux)}
 \usage{
-install_fonts_linux()
+install_fonts_linux(font_dst = "~/.fonts")
+}
+\arguments{
+\item{font_dst}{location for fonts, default is "~/.fonts" for user wide installation, use "/usr/local/share/fonts" for
+system-wide (requires root privs)}
 }
 \description{
-Import fonts in the ktheme package system-wide (on Linux)
+Import fonts in the ktheme package user-wide or system-wide (on Linux)
 }

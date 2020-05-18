@@ -77,8 +77,8 @@ library(ktheme)
 if(Sys.info()["sysname"] == "Linux")
   install_fonts_linux()
 
-library(extrafont)
-extrafont::loadfonts()
+#library(extrafont)
+#extrafont::loadfonts()
 
 # required in the following usage examples 
 library(dplyr)

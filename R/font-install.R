@@ -1,8 +1,10 @@
-#' Import fonts in the ktheme package system-wide (on Linux)
+#' Import fonts in the ktheme package user-wide or system-wide (on Linux)
 #'
+#' @param font_dst location for fonts, default is "~/.fonts" for user wide installation, use "/usr/local/share/fonts" for
+#' system-wide (requires root privs)
 #' @md
 #' @export
-install_fonts_linux <- function() {
+install_fonts_linux <- function(font_dst = "~/.fonts") {
   if (!Sys.info()["sysname"] == "Linux")
     stop("Sorry, not implemented for installing on non-linux os:es (yet)")
 
@@ -10,7 +12,6 @@ install_fonts_linux <- function() {
     stop("Couldn't find fc-cache installed on the system...")
 
   font_src <- system.file("fonts", package = "ktheme")
-  font_dst <- normalize_path("~/.fonts") #"/usr/share/fonts/truetype"
 
   stopifnot(all(dir.exists(font_dst), dir.exists(font_src)))
 
