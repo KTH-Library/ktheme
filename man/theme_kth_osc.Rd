@@ -8,6 +8,10 @@ version of Open Sans.}
 theme_kth_osc(
   base_family = "Open Sans Condensed",
   plot_title_family = "Open Sans Condensed",
+  subtitle_face = "bold",
+  strip_text_face = "bold",
+  axis_title_face = "bold",
+  fontscale_factor = 1.2,
   ...
 )
 }
@@ -15,6 +19,14 @@ theme_kth_osc(
 \item{base_family}{base font family and size}
 
 \item{plot_title_family}{plot title family}
+
+\item{subtitle_face}{the font face used for subtitles, by default bold}
+
+\item{strip_text_face}{the font face used for strip texts, by default bold}
+
+\item{axis_title_face}{the font face used for axis titles, by default bold}
+
+\item{fontscale_factor}{the font scaling factor used, by default 1.2}
 
 \item{...}{
   Arguments passed on to \code{\link[=theme_kth]{theme_kth}}
@@ -24,18 +36,15 @@ theme_kth_osc(
     \item{\code{plot_title_size}}{plot title family, face, size and margi}
     \item{\code{plot_title_margin}}{plot title family, face, size and margi}
     \item{\code{subtitle_family}}{plot subtitle family, face and size}
-    \item{\code{subtitle_face}}{plot subtitle family, face and size}
     \item{\code{subtitle_size}}{plot subtitle family, face and size}
     \item{\code{subtitle_margin}}{plot subtitle margin bottom (single numeric value)}
     \item{\code{strip_text_family}}{facet label font family, face and size}
-    \item{\code{strip_text_face}}{facet label font family, face and size}
     \item{\code{strip_text_size}}{facet label font family, face and size}
     \item{\code{caption_family}}{plot caption family, face, size and margin}
     \item{\code{caption_face}}{plot caption family, face, size and margin}
     \item{\code{caption_size}}{plot caption family, face, size and margin}
     \item{\code{caption_margin}}{plot caption family, face, size and margin}
     \item{\code{axis_title_family}}{axis title font family, face and size}
-    \item{\code{axis_title_face}}{axis title font family, face and size}
     \item{\code{axis_title_size}}{axis title font family, face and size}
     \item{\code{axis_title_just}}{axis title font justification, one of `[blmcrt]`}
     \item{\code{plot_margin}}{plot margin (specify with [ggplot2::margin()])}

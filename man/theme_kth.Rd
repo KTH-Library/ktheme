@@ -32,7 +32,8 @@ theme_kth(
   grid = TRUE,
   axis_col = "#cccccc",
   axis = FALSE,
-  ticks = FALSE
+  ticks = FALSE,
+  fontscale_factor = 1
 )
 }
 \arguments{
@@ -63,6 +64,8 @@ theme_kth(
 \item{axis}{add x or y axes? `TRUE`, `FALSE`, "`xy`"}
 
 \item{ticks}{ticks if `TRUE` add ticks}
+
+\item{fontscale_factor}{scaling factor for font sizes, by default 1}
 }
 \description{
 A [ggplot2] theme with default for the KTH graphical profile.
