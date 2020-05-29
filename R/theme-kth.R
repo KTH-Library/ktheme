@@ -14,6 +14,7 @@
 #' @param axis_text_size font size of axis text
 #' @param axis add x or y axes? `TRUE`, `FALSE`, "`xy`"
 #' @param ticks ticks if `TRUE` add ticks
+#' @param fontscale_factor scaling factor for font sizes, by default 1
 #' @export
 #' @examples \dontrun{
 #' library(ggplot2)
@@ -57,7 +58,15 @@ theme_kth <- function(base_family="Open Sans", base_size = 11.5,
                         axis_title_face = "plain", axis_title_just = "rt",
                         plot_margin = margin(5.5, 5.5, 5.5, 5.5),
                         grid_col = "#cccccc", grid = TRUE,
-                        axis_col = "#cccccc", axis = FALSE, ticks = FALSE) {
+                        axis_col = "#cccccc", axis = FALSE, ticks = FALSE,
+                        fontscale_factor = 1) {
+
+  base_size <- base_size * fontscale_factor
+  plot_title_size <- plot_title_size * fontscale_factor
+  subtitle_size <- subtitle_size * fontscale_factor
+  strip_text_size <- strip_text_size * fontscale_factor
+  caption_size <- caption_size * fontscale_factor
+  axis_title_size <- axis_title_size * fontscale_factor
 
   ret <- ggplot2::theme_minimal(base_family=base_family, base_size=base_size)
 
@@ -160,11 +169,23 @@ update_geom_font_defaults <- function(family="Open Sans", face="plain", size=3.5
 #' version of Open Sans.
 #' @param base_family base font family and size
 #' @param plot_title_family plot title family
+#' @param subtitle_face the font face used for subtitles, by default bold
+#' @param strip_text_face the font face used for strip texts, by default bold
+#' @param axis_title_face the font face used for axis titles, by default bold
+#' @param fontscale_factor the font scaling factor used, by default 1.2
 #' @inheritDotParams theme_kth
 #' @export
 theme_kth_osc <- function(
   base_family="Open Sans Condensed",
-  plot_title_family="Open Sans Condensed", ...)
+  plot_title_family="Open Sans Condensed",
+  subtitle_face = "bold",
+  strip_text_face = "bold",
+  axis_title_face = "bold", fontscale_factor = 1.2, ...)
 {
-    theme_kth(base_family = base_family, plot_title_family = plot_title_family, ...)
+    theme_kth(
+      base_family = base_family, plot_title_family = plot_title_family,
+      subtitle_face = subtitle_face, strip_text_face = strip_text_face,
+      axis_title_face = axis_title_face,
+      fontscale_factor = fontscale_factor, ...) +
+    theme(legend.title = element_text(face = "bold"))
 }
