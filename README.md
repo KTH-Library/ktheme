@@ -10,8 +10,8 @@ experimental](https://raster.shields.io/badge/lifecycle-experimental-orange.png)
 <!-- badges: end -->
 
 This is an R package providing some styling resources for web content
-intended to align with the graphical profile used at KTH - the Royal
-Institue of Technology.
+intended to align with the graphical profile used at KTH Royal Institute
+of Technology.
 
 It is heavily inspired by <https://github.com/hrbrmstr/hrbrthemes>. Most
 of the graphical design considerations, the package structure used and
@@ -333,7 +333,7 @@ pie <-
   geom_bar(width = 1, stat = "identity") +
   coord_polar("y", start = 0) +
   scale_fill_manual(values = unname(ktheme::palette_kth()), guide = FALSE) +
-  theme_kth_osc() + theme(
+  theme_kth_osc(base_family = "Open Sans Condensed Light") + theme(
     axis.title.x = element_blank(),
     axis.title.y = element_blank(),
     panel.border = element_blank(),
