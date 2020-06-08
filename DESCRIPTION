@@ -37,7 +37,6 @@ Imports:
     tools,
     magrittr,
     gdtools,
-    purrr,
-    rlang
+    purrr
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
