@@ -49,10 +49,9 @@ palette_kth <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
     lightblue = rgb(36, 160, 216, maxColorValue = 256),
     cerise = rgb(216, 84, 151, maxColorValue = 256),
     olive = rgb(176, 201, 43, maxColorValue = 256),
-    gray = rgb(101, 101, 108, maxColorValue = 256)
+    # Cool Grey 10 suggested by Martin Krzywinski (see http://mkweb.bcgsc.ca/colorblind)
+    gray = rgb(99, 102, 106, maxColorValue = 256)
   )
-
-
 
   p80 <- ftg(p100, 80) #alpha(p100, 0.8)
   #p80 <- setNames(p80, paste0(names(p100), "80"))
