@@ -23,4 +23,30 @@ install_fonts_linux <- function(font_dst = "~/.fonts") {
   system(cmd)
 }
 
+#' Import fonts in the ktheme package user-wide or system-wide (on Mac OS)
+#'
+#' @param font_dst location for fonts, default is "~/Library/Fonts" for user wide installation, use "/Library/Fonts" for
+#' system-wide (may require root privs)
+#' @md
+#' @export
+install_fonts_macos <- function(font_dst = "~/Library/Fonts") {
+  if (!Sys.info()["sysname"] == "Darwin")
+    stop("Sorry, this function is intended for Darwin os:es")
+
+  if (Sys.which("fc-cache") == "")
+    stop("Couldn't find fc-cache installed on the system...")
+
+  font_src <- system.file("fonts", package = "ktheme")
+
+  stopifnot(all(dir.exists(font_dst), dir.exists(font_src)))
+
+  message("Copying fonts from ", font_src, " to ", font_dst, "...")
+  list.files(font_src, recursive = TRUE) %>% paste(font_src,.,sep = '/') %>% file.copy(font_dst, overwrite = FALSE)
+
+  message("Updating font cache in system")
+  cmd <- sprintf("fc-cache -fv %s", font_dst)
+  system(cmd)
+  #may need to run this afterwards, as root user
+  #extrafonts::ttf_import()
+}
 
