@@ -49,28 +49,6 @@ Two templates are provided for styling `rmarkdown` authored content:
 It also provides a `theme_kth()` function which can be used to style
 ggplots.
 
-### Color palette
-
-Finally, there is a set of color palettes based on the five [KTH
-signature
-colors](https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profilfarger-1.845077).
-
-This color palette can be used to color qualitative data, sequential
-data and diverging data.
-
-  - qualitative palette for nominal or unordered categorical values
-    (using the primary KTH profile color (blue), followed by the four
-    secondary profile colors, each in three variants using 100%, 40% and
-    80% alpha respectively, thus providing a total of 5 x 3 = 15 colors)
-  - sequential palette for quantitative magnitudes - high/low values -
-    or for ordered categorical data (the primary color in 5 stepped
-    variations - using varying levels of alpha)
-  - diverging palette for use with quantitative values centered around
-    some point - or centered ordered categorical data (the primary color
-    is used on one end of the palette and the closest complement color
-    on the other to provide a 7-color palette with three steps of blue,
-    a gray midpoint and three steps of red)
-
 ## Installation
 
 You can install the development version of `ktheme` from
@@ -101,6 +79,123 @@ library(ggplot2)
 library(Cairo)
 ```
 
+# Color palettes
+
+Two color palettes are provided; the “standard” and the “digital”
+palette.
+
+Both palettes take their starting point in a set of colors originating
+from the [KTH signature
+colors](https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profilfarger-1.845077).
+
+These color palette can be used to color qualitative data, sequential
+data and diverging data.
+
+  - qualitative palette for nominal or unordered categorical values
+    (using the primary KTH profile color (blue), followed by the four
+    secondary profile colors, each color available in triplets (darker
+    tone, lighter tone, medium tone), thus providing a total of 5 x 3 =
+    15 colors)
+  - sequential palette for quantitative magnitudes - high/low values -
+    or for ordered categorical data (the primary color in 5 stepped
+    variations - from the strongest tone stepping towards a neutral
+    gray)
+  - diverging palette for use with quantitative values centered around
+    some point - or centered ordered categorical data of that same
+    nature (the primary color is used on one end of the palette and the
+    closest complement color on the other to provide a 7-color palette
+    with three steps of blue towards a gray midpoint and three steps of
+    red away from that midpoint)
+
+## Standard KTH palette
+
+This palette is based on the [standard KTH
+colors](https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profilfarger-1.845077).
+
+``` r
+
+# for nominal categorical coloring, try to use five colors
+palette_kth(n = 5) %>% unname %>% show_pal()
+```
+
+![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
+
+``` r
+
+# if you need to color more categorical data, use color pairs
+palette_kth(n = 10) %>% unname %>% show_pal(nrow = 2, ncol = 5)
+```
+
+![](man/figures/README-unnamed-chunk-3-2.png)<!-- -->
+
+``` r
+
+# for categorial colors there is a maximum of 15 color triplets
+# use with caution as the medium and strong triplet members might be hard to distinguish
+palette_kth(n = 15) %>% unname %>% show_pal(ncol = 5, nrow = 3)
+```
+
+![](man/figures/README-unnamed-chunk-3-3.png)<!-- -->
+
+``` r
+
+# sequential categorical offers a maximum of 5 steps (primary color, fading towards gray)
+palette_kth(n = 5, type = "seq") %>% unname %>% show_pal()
+```
+
+![](man/figures/README-unnamed-chunk-3-4.png)<!-- -->
+
+``` r
+palette_kth(n = 5, type = "seq") %>% unname %>% show_pal(borders = FALSE, labels = FALSE)
+```
+
+![](man/figures/README-unnamed-chunk-3-5.png)<!-- -->
+
+``` r
+
+# diverging categorical offers a maximum of 7 steps (primary color and complementary color, steps towards gray in the middle)
+palette_kth_digital(n = 7, type = "div") %>% unname %>% show_pal()
+```
+
+![](man/figures/README-unnamed-chunk-3-6.png)<!-- -->
+
+``` r
+palette_kth_digital(n = 7, type = "div") %>% unname %>% show_pal(labels = FALSE, borders = FALSE)
+```
+
+![](man/figures/README-unnamed-chunk-3-7.png)<!-- -->
+
+## Palette “KTH Digital”
+
+This palette is based on the [new KTH colors for Digital
+media](https://intra.kth.se/administration/kommunikation/grafiskprofil/profilfarger-1.845077)
+
+``` r
+
+# all 5 colors (primary and secondary signature colors) in triplets (faded towards gray, "strong", "light" and "medium")
+palette_kth_digital(n = 15) %>% unname %>% show_pal(ncol = 5, nrow = 3)
+```
+
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+
+# sequential 5 steps (primary color, fading towards gray)
+palette_kth_digital(n = 5, type = "seq") %>% unname %>% show_pal()
+```
+
+![](man/figures/README-unnamed-chunk-4-2.png)<!-- -->
+
+``` r
+
+# diverging 7 steps (primary color and complementary color, steps towards gray in the middle)
+palette_kth_digital(n = 7, type = "div") %>% unname %>% show_pal(labels = FALSE, borders = FALSE)
+```
+
+![](man/figures/README-unnamed-chunk-4-3.png)<!-- -->
+
+# Usage
+
 Here are usage examples showing plots made using the different KTH color
 palettes and the Open Sans font.
 
@@ -116,7 +211,7 @@ ggplot(mtcars, aes(mpg, wt)) +
   theme_kth()
 ```
 
-![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
 
 Using the KTH palette, qualitative coloring:
 
@@ -129,7 +224,7 @@ ggplot(iris, aes(Species, Sepal.Length)) +
   theme(legend.position = "top")
 ```
 
-![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 
@@ -140,7 +235,7 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
   theme(legend.position = "top")
 ```
 
-![](man/figures/README-unnamed-chunk-4-2.png)<!-- -->
+![](man/figures/README-unnamed-chunk-6-2.png)<!-- -->
 
 Another example using demo data:
 
@@ -170,7 +265,7 @@ flush_ticks(gg)
 #> theme(axis.text.y=element_text(vjust=c(0, rep(0.5, 3), 1)))
 ```
 
-![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
 
 Diverging colors:
 
@@ -201,7 +296,7 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
   coord_flip()
 ```
 
-![](man/figures/README-unnamed-chunk-6-1.png)<!-- --> Sequential
+![](man/figures/README-unnamed-chunk-8-1.png)<!-- --> Sequential
 discrete colors versus qualitative discrete colors:
 
 ``` r
@@ -221,7 +316,7 @@ gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + the
 gg1 + gg2
 ```
 
-![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
 
 In this case it might be better to use small multiples (like below) or
 another type of visual.
@@ -230,7 +325,7 @@ another type of visual.
 gg3
 ```
 
-![](man/figures/README-unnamed-chunk-8-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-10-1.png)<!-- -->
 
 A narrow or condensed variant of Open Sans is available.
 
@@ -263,7 +358,7 @@ scale_fill_kth() +
 theme(axis.text.y=element_blank())
 ```
 
-![](man/figures/README-unnamed-chunk-9-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-11-1.png)<!-- -->
 
 Examples of customized ggplots used in the R package `bibliomatrix`:
 
@@ -316,7 +411,7 @@ p2 <- abm_waffle_pct(nonuniv_share, label = nonuniv_lbl) +
 p1 + p2
 ```
 
-![](man/figures/README-unnamed-chunk-11-1.png)<!-- -->
+![](man/figures/README-unnamed-chunk-13-1.png)<!-- -->
 
 ``` r
 
@@ -346,4 +441,4 @@ pie <-
 pie
 ```
 
-![](man/figures/README-unnamed-chunk-11-2.png)<!-- -->
+![](man/figures/README-unnamed-chunk-13-2.png)<!-- -->

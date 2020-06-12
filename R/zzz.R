@@ -20,4 +20,6 @@
 
 }
 
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
+globalz <- unlist(strsplit(". blue color desc green red rgb40 rgb80", " "))
+
+if(getRversion() >= "2.15.1")  utils::globalVariables(globalz)

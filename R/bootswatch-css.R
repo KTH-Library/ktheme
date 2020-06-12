@@ -1,5 +1,4 @@
 #' @noRd
-#' @export
 scss_variables <- function() {
 
   css_colors <- function(col_name, col_rgb)
@@ -59,7 +58,6 @@ scss_variables <- function() {
 }
 
 #' @noRd
-#' @export
 less_variables <- function() {
 
     # TODO: complete this work!
