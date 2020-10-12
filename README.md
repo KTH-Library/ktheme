@@ -7,6 +7,8 @@
 
 [![Lifecycle:
 experimental](https://raster.shields.io/badge/lifecycle-experimental-orange.png)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build
+status](https://github.com/KTH-Library/ktheme/workflows/R-CMD-check/badge.svg)](https://github.com/KTH-Library/ktheme/actions)
 <!-- badges: end -->
 
 This is an R package providing some styling resources for web content
