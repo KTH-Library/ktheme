@@ -4,6 +4,7 @@
 #'
 #' @inheritParams rmarkdown::html_document
 #' @param toc,toc_depth TOC params
+#' @param smart undocumented argument for latex-smart (?)
 #' @param extra_dependencies,... Additional function arguments to pass to the
 #'        base R Markdown HTML output formatter
 #' @export

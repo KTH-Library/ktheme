@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://raster.shields.io/badge/lifecycle-experimental-orange.png)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R-CMD-check](https://github.com/KTH-Library/ktheme/workflows/R-CMD-check/badge.svg)](https://github.com/KTH-Library/ktheme/actions)
 <!-- badges: end -->
 
 This is an R package providing some styling resources for web content intended to align with the graphical profile used at KTH Royal Institute of Technology. 

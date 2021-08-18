@@ -11,3 +11,4 @@
 ^cran-comments\.md$
 ^build$
 ^devel
+^\.github$
