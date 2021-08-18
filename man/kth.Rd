@@ -44,10 +44,6 @@ outputting HTML directly into the markdown document).}
 
 \item{dev}{Graphics device to use for figure output (defaults to png)}
 
-\item{smart}{Produce typographically correct output, converting straight
-quotes to curly quotes, \code{---} to em-dashes, \code{--} to en-dashes, and
-\code{...} to ellipses.}
-
 \item{self_contained}{Produce a standalone HTML file with no external
 dependencies, using data: URIs to incorporate the contents of linked
 scripts, stylesheets, images, and videos. Note that even for self contained
@@ -63,7 +59,7 @@ MathJax CDN. The "local" option uses a local version of MathJax (which is
 copied into the output directory). You can pass an alternate URL or pass
 \code{NULL} to exclude MathJax entirely.}
 
-\item{extra_dependencies, ...}{Additional function arguments to pass to the
+\item{extra_dependencies, smart, ...}{Additional function arguments to pass to the
 base R Markdown HTML output formatter}
 
 \item{css}{One or more css files to include}

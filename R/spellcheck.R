@@ -11,7 +11,7 @@
 #' @md
 #' @param gg ggplot2 object
 #' @param dict a dictionary object or string which can be passed to [hunspell::dictionary].
-#'     Defaults to `hunspell::dictionary("sv_SE")`
+#'     Defaults to `hunspell::dictionary("en_US")`
 #' @param ignore character vector with additional approved words added to the dictionary.
 #'     Defaults to `hunspell::en_stats`
 #' @return the object that was passed in
@@ -35,7 +35,7 @@ gg_check <- function(gg, dict, ignore) {
   try_require("hunspell", "hunspell")
   try_require("stringi", "stri_extract_all_words")
 
-  if (missing(dict)) dict <- hunspell::dictionary("sv_SE")
+  if (missing(dict)) dict <- hunspell::dictionary("en_US")
   if (missing(ignore)) ignore <- hunspell::en_stats
 
   if (inherits(gg, "labels")) {
