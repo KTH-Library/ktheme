@@ -31,25 +31,16 @@ theme_kth_osc(
 \item{...}{
   Arguments passed on to \code{\link[=theme_kth]{theme_kth}}
   \describe{
-    \item{\code{base_size}}{base font family and size}
-    \item{\code{plot_title_face}}{plot title family, face, size and margi}
-    \item{\code{plot_title_size}}{plot title family, face, size and margi}
-    \item{\code{plot_title_margin}}{plot title family, face, size and margi}
-    \item{\code{subtitle_family}}{plot subtitle family, face and size}
-    \item{\code{subtitle_size}}{plot subtitle family, face and size}
+    \item{\code{base_family,base_size}}{base font family and size}
+    \item{\code{plot_title_family,plot_title_face,plot_title_size,plot_title_margin}}{plot title family, face, size and margi}
+    \item{\code{subtitle_family,subtitle_face,subtitle_size}}{plot subtitle family, face and size}
     \item{\code{subtitle_margin}}{plot subtitle margin bottom (single numeric value)}
-    \item{\code{strip_text_family}}{facet label font family, face and size}
-    \item{\code{strip_text_size}}{facet label font family, face and size}
-    \item{\code{caption_family}}{plot caption family, face, size and margin}
-    \item{\code{caption_face}}{plot caption family, face, size and margin}
-    \item{\code{caption_size}}{plot caption family, face, size and margin}
-    \item{\code{caption_margin}}{plot caption family, face, size and margin}
-    \item{\code{axis_title_family}}{axis title font family, face and size}
-    \item{\code{axis_title_size}}{axis title font family, face and size}
+    \item{\code{strip_text_family,strip_text_face,strip_text_size}}{facet label font family, face and size}
+    \item{\code{caption_family,caption_face,caption_size,caption_margin}}{plot caption family, face, size and margin}
+    \item{\code{axis_title_family,axis_title_face,axis_title_size}}{axis title font family, face and size}
     \item{\code{axis_title_just}}{axis title font justification, one of `[blmcrt]`}
     \item{\code{plot_margin}}{plot margin (specify with [ggplot2::margin()])}
-    \item{\code{grid_col}}{grid & axis colors; both default to `#cccccc`}
-    \item{\code{axis_col}}{grid & axis colors; both default to `#cccccc`}
+    \item{\code{grid_col,axis_col}}{grid & axis colors; both default to `#cccccc`}
     \item{\code{grid}}{panel grid (`TRUE`, `FALSE`, or a combination of `X`, `x`, `Y`, `y`)}
     \item{\code{axis_text_size}}{font size of axis text}
     \item{\code{axis}}{add x or y axes? `TRUE`, `FALSE`, "`xy`"}
