@@ -259,10 +259,11 @@ scale_fill_kth <- function(...) {
 #'   \item{\code{short_desc}}{character Short description of SDG}
 #'   \item{\code{long_desc}}{character Long description of SDG}
 #'}
+#' @importFrom dplyr tibble
 #' @export
 sdg_colors <- function() {
   # from https://github.com/CMUSustainability/SDGmapR/blob/main/data-raw/DATASET.R
-  tibble::tibble(
+  tibble(
     goal = c(1:17),
     color = c(
       '#e5243b', '#DDA63A', '#4C9F38', '#C5192D', '#FF3A21', '#26BDE2',
