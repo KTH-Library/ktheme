@@ -15,8 +15,10 @@ kth_pdf(...)
     \item{\code{number_sections}}{\code{TRUE} to number section headings}
     \item{\code{fig_width}}{Default width (in inches) for figures}
     \item{\code{fig_height}}{Default height (in inches) for figures}
-    \item{\code{fig_crop}}{\code{TRUE} to automatically apply the \code{pdfcrop} utility
-(if available) to pdf figures}
+    \item{\code{fig_crop}}{Whether to crop PDF figures with the command
+\command{pdfcrop}. This requires the tools \command{pdfcrop} and
+\command{ghostscript} to be installed. By default, \code{fig_crop = TRUE}
+if these two tools are available.}
     \item{\code{fig_caption}}{\code{TRUE} to render figures with captions}
     \item{\code{dev}}{Graphics device to use for figure output (defaults to pdf)}
     \item{\code{df_print}}{Method to be used for printing data frames. Valid values
@@ -32,9 +34,18 @@ can disable the \code{df_print} behavior entirely by setting the option
 \code{rmarkdown.df_print} to \code{FALSE}. See
 \href{https://bookdown.org/yihui/rmarkdown/html-document.html#data-frame-printing}{Data
 frame printing section} in bookdown book for examples.}
-    \item{\code{highlight}}{Syntax highlighting style. Supported styles include
-"default", "tango", "pygments", "kate", "monochrome", "espresso",
-"zenburn", and "haddock". Pass \code{NULL} to prevent syntax highlighting.}
+    \item{\code{highlight}}{Syntax highlighting style passed to Pandoc.
+
+ Supported built-in styles include "default", "tango", "pygments", "kate",
+ "monochrome", "espresso", "zenburn", "haddock", and "breezedark".
+
+  Two custom styles are also included, "arrow", an accessible color scheme,
+  and "rstudio", which mimics the default IDE theme. Alternatively, supply a
+  path to a \samp{.theme} file to use
+  \href{https://pandoc.org/MANUAL.html#syntax-highlighting}{a custom Pandoc
+  style}. Note that custom theme requires Pandoc 2.0+.
+
+  Pass \code{NULL} to prevent syntax highlighting.}
     \item{\code{template}}{Pandoc template to use for rendering. Pass "default" to use
 the rmarkdown package default template; pass \code{NULL} to use pandoc's
 built-in template; pass a path to use a custom template that you've
@@ -52,7 +63,7 @@ which means citations will be processed via the command
     \item{\code{includes}}{Named list of additional content to include within the
 document (typically created using the \code{\link[rmarkdown]{includes}} function).}
     \item{\code{md_extensions}}{Markdown extensions to be added or removed from the
-default definition or R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
+default definition of R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
 additional details.}
     \item{\code{output_extensions}}{Pandoc extensions to be added or removed from the
 output format, e.g., \code{"-smart"} means the output format will be
