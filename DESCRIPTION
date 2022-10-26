@@ -1,6 +1,6 @@
 Package: ktheme
 Type: Package
-Title: KTH Profile Theme For 'ggplot2'
+Title: KTH Profile Theme for 'ggplot2'
 Version: 0.2.0
 Authors@R: 
     as.person(c(
@@ -18,7 +18,6 @@ Encoding: UTF-8
 Suggests:
     testthat,
     gridExtra,
-    hunspell,
     stringi,
     clipr,
     svglite
@@ -40,6 +39,7 @@ Imports:
     tidyr,
     dplyr,
     stringr,
-    farver
+    farver,
+    hunspell
 RoxygenNote: 7.2.1
 VignetteBuilder: knitr

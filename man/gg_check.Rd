@@ -10,7 +10,7 @@ gg_check(gg, dict, ignore)
 \item{gg}{ggplot2 object}
 
 \item{dict}{a dictionary object or string which can be passed to \link[hunspell:hunspell]{hunspell::dictionary}.
-Defaults to \code{hunspell::dictionary("sv_SE")}}
+Defaults to \code{hunspell::dictionary("en_US")}}
 
 \item{ignore}{character vector with additional approved words added to the dictionary.
 Defaults to \code{hunspell::en_stats}}

@@ -4,7 +4,7 @@
 #'
 #' @inheritParams rmarkdown::html_document
 #' @param toc,toc_depth TOC params
-#' @param extra_dependencies,... Additional function arguments to pass to the
+#' @param extra_dependencies,smart,... Additional function arguments to pass to the
 #'        base R Markdown HTML output formatter
 #' @export
 kth <- function(number_sections = FALSE,
