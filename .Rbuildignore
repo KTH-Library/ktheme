@@ -13,3 +13,4 @@
 ^devel
 ^\.github$
 
+^data-raw$

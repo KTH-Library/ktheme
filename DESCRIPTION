@@ -41,5 +41,7 @@ Imports:
     stringr,
     farver,
     hunspell
-RoxygenNote: 7.2.1
+Remotes: 
+    url::https://cloud.r-project.org/src/contrib/Archive/Rttf2pt1/Rttf2pt1_1.3.8.tar.gz
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr

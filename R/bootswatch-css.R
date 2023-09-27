@@ -7,12 +7,6 @@ scss_variables <- function() {
   gray_light <- palette_kth()["gray40"]
   gray_dark <- palette_kth()["gray"]
 
-  luma <- function(col) {
-    rgb <- col2rgb(col)
-    luma <- sqrt(0.299 * rgb[1,] ^ 2 + 0.587 * rgb[2,] ^ 2 + 0.114 * rgb[3,] ^ 2)
-    setNames(luma, NULL)
-  }
-
   g1 <- round(luma(gray_light) + 40)
   g8 <- round(luma(gray_dark) - 40)
   g9 <- round(luma(gray_dark) - 80)
@@ -112,3 +106,100 @@ less_variables <- function() {
     message("Use these colors and font settings in (the beginning of) variables.less")
     message("Replace settings in 'flatly' variables.less for color and fonts (up to 'Iconography')")
 }
+
+luma <- function(col) {
+  rgb <- col2rgb(col)
+  luma <- sqrt(0.299 * rgb[1,] ^ 2 + 0.587 * rgb[2,] ^ 2 + 0.114 * rgb[3,] ^ 2)
+  setNames(luma, NULL)
+}
+
+css_colors <- function(col_name, col_rgb)
+  sprintf("$%s: %s !default;", col_name, col_rgb) %>% setNames(col_name)
+
+
+#' @noRd
+scss_variables_bs5 <- function(pal = palette_kth_neo) {
+
+  # gray nuances
+  gray_light <- pal()["gray40"]
+  gray_dark <- pal()["gray"]
+
+  g1 <- round(luma(gray_light) + 40)
+  g8 <- round(luma(gray_dark) - 40)
+  g9 <- round(luma(gray_dark) - 80)
+
+  gray_lighter <- sprintf("#%x%x%x", g1, g1, g1)
+  gray_darker <- sprintf("#%x%x%x", g8, g8, g8)
+  gray_darkest <- sprintf("#%x%x%x", g9, g9, g9)
+
+  profile_cols <- c(
+    "blue", "indigo", "purple", "pink", "red",
+    "orange", "yellow", "green", "teal", "cyan"
+  )
+
+  hexes <- hexes_neo()
+
+  # hexes <- list(
+  #   blue = "#004791", ## KTH-blå
+  #   indigo = "#000061", # Marinblå
+  #   purple = "#78001A", # Mörk tegel
+  #   pink = "#FFCCC4", # Ljus tegel;
+  #   red = "#E86A58", # Tegel
+  #   orange = "#A65900", # Mörkgul
+  #   yellow = "#FFBE00", # Gul
+  #   green = "#4DA061", # Grön
+  #   teal = "#339C9C", # Turkos
+  #   cyan = "#6298D2", # Himmelsblå
+  #   sand = "#EBE5E0" # Sand
+  # )
+
+  cols <- c(
+    "white",
+    sprintf("gray-%s00", 1:9),
+    "black",
+    profile_cols)
+
+  pal <- pal(n = 15)
+
+  colors = list(
+    css_colors("white", "#fff"),
+    css_colors("gray-100", gray_lighter),
+    css_colors("gray-200", gray_light),
+    css_colors(
+      col_name = sprintf("gray-%s00", 3:6),
+      col_rgb = scales::grey_pal(start = luma(gray_dark) / 256, end = luma(gray_light) / 256)(4 + 2)[2:5]
+    ),
+    css_colors("gray-700", gray_dark),
+    css_colors("gray-800", gray_darker),
+    css_colors("gray-900", gray_darkest),
+    css_colors("black", "#000"),
+
+    # profile colors
+    css_colors("blue", hexes$blue),
+    css_colors("indigo", hexes$indigo), #pal["lightblue80"]),
+    css_colors("purple", hexes$purple), #pal["cerise80"]),
+    css_colors("pink", hexes$pink), #pal["cerise40"]),
+    css_colors("red", hexes$red), #pal["cerise"]),
+    css_colors("orange", hexes$orange), #pal["olive"]),
+    css_colors("yellow", hexes$yellow), #pal["olive40"]),
+    css_colors("green", hexes$green), #"#007fae"), #    css_colors("green", pal["olive80"]),
+    css_colors("teal", hexes$teal), #pal["lightblue40"]),
+    css_colors("cyan", hexes$cyan) #pal["lightblue80"])
+  )
+
+  cat(paste0(collapse = "\n", purrr::flatten(colors)))
+
+  font_kth <- "Figtree"
+
+  # $font-family-sans-serif:      "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+  fonts <- paste0(
+    '$font-family-sans-serif:      \"', font_kth, '\", -apple-system, BlinkMacSystemFont, ',
+    '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", ',
+    '"Segoe UI Emoji", "Segoe UI Symbol" !default;')
+
+  cat("\n", fonts, "\n")
+
+  message("Use the colors and font settings in _variables.scss")
+  message("Update the webfont in _bootswatch.scss")
+}
+

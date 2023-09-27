@@ -189,3 +189,27 @@ theme_kth_osc <- function(
       fontscale_factor = fontscale_factor, ...) +
     theme(legend.title = element_text(face = "bold"))
 }
+
+#' A [ggplot2] theme with default for the KTH graphical profile using the Figtree font .
+#' @param base_family base font family and size
+#' @param plot_title_family plot title family
+#' @param subtitle_face the font face used for subtitles, by default bold
+#' @param strip_text_face the font face used for strip texts, by default bold
+#' @param axis_title_face the font face used for axis titles, by default bold
+#' @param fontscale_factor the font scaling factor used, by default 1.2
+#' @inheritDotParams theme_kth
+#' @export
+theme_kth_figtree <- function(
+  base_family="Figtree-Regular",
+  plot_title_family="Figtree",
+  subtitle_face = "bold",
+  strip_text_face = "bold",
+  axis_title_face = "bold", fontscale_factor = 1.2, ...)
+{
+    theme_kth(
+      base_family = base_family, plot_title_family = plot_title_family,
+      subtitle_face = subtitle_face, strip_text_face = strip_text_face,
+      axis_title_face = axis_title_face,
+      fontscale_factor = fontscale_factor, ...) +
+    theme(legend.title = element_text(face = "bold"))
+}

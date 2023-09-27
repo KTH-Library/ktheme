@@ -76,6 +76,114 @@ palette_kth <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
 
 }
 
+hexes_neo <- function() {
+  list(
+    blue = "#004791", ## KTH-blå
+    indigo = "#000061", # Marinblå
+    purple = "#78001A", # Mörk tegel
+    pink = "#FFCCC4", # Ljus tegel
+    red = "#E86A58", # Tegel
+    orange = "#A65900", # Mörkgul
+    yellow = "#FFBE00", # Gul
+    green = "#4DA061", # Grön
+    teal = "#339C9C", # Turkos
+    cyan = "#6298D2", # Himmelsblå
+    sand = "#EBE5E0", # Sand
+    lightblue = "#DEF0FF", # Ljusblå
+    digitalblue = "#0029ED", # Digitalblå (undvik)
+    darkteal = "#1C434C", # Mörkturkos
+    darkred = "#78001A", # Mörk tegel
+    darkyellow = "#A65900", # Mörkgul
+    darkgray = "#323232", # Mörkgrå
+    offblack = "#212121", # Bruten svart
+    offwhite = "#FCFCFC", # Bruten vit
+    darkblue = "#000061", # Marinblå
+    darkgreen = "#0D4A21", # Mörkgrön
+    lightgreen = "#C7EBBA", # Ljusgrön
+    lightteal = "#B2E0E0", # Ljusturkos
+    lightyellow = "#FFF080", # Ljusgul
+    lightgray = "#E6E6E6", # Ljusgrå
+    gray = "#A5A5A5", # Grå
+    darkgray = "#323232" # Mörkgrå
+  )
+}
+
+#' KTH color palette with 5 qualitative colors
+#'
+#' This palette is taken from https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profilfarger-1.845077
+#'
+#' This function aligns its signature with RColorBrewer::color.pal()
+#'
+#' @param n number of colors to use (1..5), default is to return all five
+#' @param name name of palette
+#' @param type nature of data, default "qual" for qualitative or "seq" for
+#' sequential or "div" for diverging
+#' @return named vector with colors and hex codes
+#' @importFrom grDevices rgb
+#' @importFrom scales alpha show_col seq_gradient_pal
+#' @importFrom stats setNames
+#' @importFrom purrr map_chr
+#' @export
+#' @examples
+#' palette_kth_neo(5)  # return the primary color in the KTH palette
+palette_kth_neo <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
+  hexes <- hexes_neo()
+
+  if (name != "KTH")
+    stop("Please use RColorBrewer::brewer.pal() for non-KTH palettes")
+
+  p100 <- c(
+    blue = hexes$blue,
+    lightblue = hexes$yellow,
+    cerise = hexes$red,
+    olive = hexes$green,
+    teal = hexes$teal,
+    # Cool Grey 10 suggested by Martin Krzywinski (see http://mkweb.bcgsc.ca/colorblind)
+    gray = rgb(99, 102, 106, maxColorValue = 255)
+  )
+
+  p80 <- ftg(p100, 80)
+  p40 <- ftg(p100, 40)
+  qual <- c(p100, p40, p80)
+
+#  seq <- c(qual["blue"], qual["blue80"], ftg(qual["blue"], 60),
+#    qual["blue40"], ftg(qual["blue40"], 20))
+
+  qual <- c(
+    hexes$blue, hexes$green, hexes$teal, hexes$red, hexes$yellow, hexes$gray,
+    hexes$lightblue, hexes$lightgreen, hexes$lightteal, hexes$pink, hexes$lightyellow, hexes$sand,
+    hexes$darkblue, hexes$darkgreen, hexes$darkteal, hexes$purple, hexes$darkyellow, hexes$darkgray
+  )
+  qual <- setNames(qual, c(
+    "blue", "green", "teal", "red", "yellow", "gray",
+    "lightblue", "lightgreen", "lightteal", "lightyellow", "lightgray",
+    "darkblue", "darkgreen", "darkteal", "darkred", "darkyellow", "darkgray")
+  )
+
+  seq <- c(
+    hexes$darkblue, hexes$blue,
+    hexes$cyan,
+    hexes$lightblue, hexes$offwhite
+  )
+  seq <- setNames(seq, paste0("blue", 1:5))
+
+  div <- c(
+    seq[1:3], # H3:H1
+    hexes$offwhite, # M
+    hexes$pink, hexes$red, hexes$darkred #L1:L3
+  )
+  div <- setNames(div, c(paste0("H", 3:1), "M", paste0("L", 1:3)))
+
+  switch(match.arg(type),
+    qual = ifelse(n %in% 1:18, p <- qual[1:n], stop("max 18 qualitative colors are available")),
+    seq = ifelse(n %in% 1:5, p <- seq[1:n], stop("max 5 sequential colors are available")),
+    div = ifelse(n %in% 1:7, p <- div[1:n], stop("max 7 diverging colors are available"))
+  )
+
+  p
+
+}
+
 hex_to_rgb <- function(hexcol) {
 
   if (stringr::str_detect(toupper(hexcol), "#[0-9A-F]{6}$"))
@@ -163,7 +271,7 @@ palette_kth_digital <- function(n = 10, name = "KTH Digital", type = c("qual", "
 #' @param labels boolean, whether to show the hexadecimal representation of the colours in each tile
 #' @param borders colour of the borders of the tiles; matches the border argument of graphics::rect(). The default means par("fg"). Use border = NA to omit borders.
 #' @param cex_label size of printed labels, works the same as cex parameter of plot()
-#' @param ncol number of columns, defaults to the matching the number of colors provided
+#' @param ncol number of columns, defaults to the matching the number of colours provided
 #' @param nrow number of rows, defaults to 1
 #' @importFrom graphics par plot rect text
 #' @export
@@ -193,6 +301,21 @@ show_pal <- function (colours, labels = TRUE, borders = NULL, cex_label = 1, nco
 #' @return data frame with information about the available palette(s)
 #' @export
 palette_kth_info <- function() {
+  data.frame(
+    palette_name = rep("KTH", 3),
+    maxcolors = c(15, 5, 7),
+    type = c("qual", "seq", "div"),
+    colorblind = FALSE
+  )
+}
+
+#' KTH color palette information for KTH standard color palette
+#'
+#' This function aligns its signature r RColorBrewer::color.pal.info()
+#'
+#' @return data frame with information about the available palette(s)
+#' @export
+palette_kth_neo_info <- function() {
   data.frame(
     palette_name = rep("KTH", 3),
     maxcolors = c(15, 5, 7),
