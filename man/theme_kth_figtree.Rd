@@ -5,7 +5,7 @@
 \title{A [ggplot2] theme with default for the KTH graphical profile using the Figtree font .}
 \usage{
 theme_kth_figtree(
-  base_family = "Figtree-Regular",
+  base_family = "Figtree-Light",
   plot_title_family = "Figtree",
   subtitle_face = "bold",
   strip_text_face = "bold",

@@ -221,7 +221,7 @@ Using the KTH palette, qualitative coloring:
 ggplot(iris, aes(Species, Sepal.Length)) + 
   geom_boxplot(aes(fill = Species)) +
   scale_fill_kth() +
-  theme_kth() +
+  theme_kth_figtree() +
   theme(legend.position = "top")
 ```
 
@@ -253,8 +253,13 @@ ggplot(mpg, aes(displ, hwy)) +
     subtitle="These plots show some example data",
     caption="Source: ktheme R package"
   ) +
-  theme_kth_figtree(grid="XY", axis="xy") +
-  theme(legend.position="none") -> gg
+  theme_kth_figtree() +
+  theme(legend.position="none")
+```
+
+![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
+
+``` r
 
 #flush_ticks(gg)
 ```
@@ -279,7 +284,7 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
     values = c("above" = pdiv[1], "below" = pdiv[2])) +
   labs(subtitle="Z score (normalised) mileage for mtcars'",
     title= "Horizontal bar graph", caption="KTH styled graph") +
-  theme_kth() +
+  theme_kth_figtree() +
   theme(
     axis.title.y=element_blank(),
     axis.title.x=element_blank(),
@@ -294,16 +299,16 @@ discrete colors versus qualitative discrete colors:
 ``` r
 library(patchwork)
 
-pdiv <- rev(tolower(palette_kth(n = 5, type = "seq") %>% setNames(NULL)))
+pdiv <- rev(tolower(palette_kth_neo(n = 5, type = "seq") %>% setNames(NULL)))
 dsamp <- diamonds[1 + 1:1000 * 50, ]
 
 gg <- ggplot(dsamp, aes(carat, price, color = cut)) + geom_point()
 
-gg1 <- gg + scale_color_manual(values = pdiv) + theme_kth() + scale_y_comma()
+gg1 <- gg + scale_color_manual(values = pdiv) + theme_kth_figtree() + scale_y_comma()
 
 gg2 <- gg + scale_color_kth() + theme_kth_figtree() + scale_y_comma()
 
-gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + theme_kth() + scale_y_comma() + theme(legend.position="bottom")
+gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + theme_kth_figtree() + scale_y_comma() + theme(legend.position="bottom")
 
 gg1 + gg2
 ```
@@ -319,7 +324,7 @@ gg3
 
 ![](man/figures/README-unnamed-chunk-10-1.png)<!-- -->
 
-A narrow or condensed variant of Open Sans is available.
+Another example with a simple bar plot:
 
 ``` r
 #update_geom_font_defaults(family=font_osc)
@@ -344,8 +349,8 @@ geom_text(aes(label=paste0("n=", n)), nudge_y=3) +
 labs(x="Vehicle category", y="Observations (n)",
      title="Seminal ggplot2 bar chart example",
      subtitle="A plot that is only useful for demonstration purposes",
-     caption="A demo of theme_kth_osc") +
-theme_kth_osc() +
+     caption="A demo of theme_kth_figtree") +
+theme_kth_figtree() +
 scale_fill_kth() +
 theme(axis.text.y=element_blank())
 ```

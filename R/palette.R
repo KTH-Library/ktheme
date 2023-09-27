@@ -150,26 +150,26 @@ palette_kth_neo <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")
 #    qual["blue40"], ftg(qual["blue40"], 20))
 
   qual <- c(
-    hexes$blue, hexes$green, hexes$teal, hexes$red, hexes$yellow, hexes$gray,
-    hexes$lightblue, hexes$lightgreen, hexes$lightteal, hexes$pink, hexes$lightyellow, hexes$sand,
-    hexes$darkblue, hexes$darkgreen, hexes$darkteal, hexes$purple, hexes$darkyellow, hexes$darkgray
+    hexes$blue, hexes$yellow, hexes$green, hexes$red, hexes$teal, hexes$gray,
+    hexes$lightblue, hexes$lightyellow, hexes$lightgreen, hexes$pink, hexes$lightteal, hexes$sand,
+    hexes$darkblue, hexes$darkyellow, hexes$darkgreen, hexes$purple, hexes$darkteal, hexes$darkgray
   )
   qual <- setNames(qual, c(
-    "blue", "green", "teal", "red", "yellow", "gray",
-    "lightblue", "lightgreen", "lightteal", "lightyellow", "lightgray",
-    "darkblue", "darkgreen", "darkteal", "darkred", "darkyellow", "darkgray")
+    "blue", "yellow", "green", "red", "teal", "gray",
+    "lightblue", "lightyellow", "lightgreen", "pink", "lightteal", "sand",
+    "darkblue", "darkyellow", "darkgreen", "darkred", "darkteal", "darkgray")
   )
 
   seq <- c(
     hexes$darkblue, hexes$blue,
     hexes$cyan,
-    hexes$lightblue, hexes$offwhite
+    hexes$lightblue, hexes$sand
   )
   seq <- setNames(seq, paste0("blue", 1:5))
 
   div <- c(
     seq[1:3], # H3:H1
-    hexes$offwhite, # M
+    hexes$sand, # M
     hexes$pink, hexes$red, hexes$darkred #L1:L3
   )
   div <- setNames(div, c(paste0("H", 3:1), "M", paste0("L", 1:3)))
@@ -347,7 +347,7 @@ palette_kth_digital_info <- function() {
 #' library(scales)
 #' scales::show_col(kth_pal()(5))
 kth_pal <- function() {
-  pal <- palette_kth()
+  pal <- palette_kth_neo()
   names(pal) <- NULL
   manual_pal(pal)
 }

@@ -200,7 +200,7 @@ theme_kth_osc <- function(
 #' @inheritDotParams theme_kth
 #' @export
 theme_kth_figtree <- function(
-  base_family="Figtree-Regular",
+  base_family="Figtree-Light",
   plot_title_family="Figtree",
   subtitle_face = "bold",
   strip_text_face = "bold",
