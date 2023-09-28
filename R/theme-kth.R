@@ -159,7 +159,7 @@ theme_kth <- function(base_family="Open Sans", base_size = 11.5,
 #'
 #' @param family,face,size,color font family name, face, size and color
 #' @export
-update_geom_font_defaults <- function(family="Open Sans", face="plain", size=3.5,
+update_geom_font_defaults <- function(family="Figtree Light", face="plain", size=3.5,
                                       color = "#2b2b2b") {
   update_geom_defaults("text", list(family=family, face=face, size=size, color=color))
   update_geom_defaults("label", list(family=family, face=face, size=size, color=color))
@@ -193,23 +193,23 @@ theme_kth_osc <- function(
 #' A [ggplot2] theme with default for the KTH graphical profile using the Figtree font .
 #' @param base_family base font family and size
 #' @param plot_title_family plot title family
-#' @param subtitle_face the font face used for subtitles, by default bold
-#' @param strip_text_face the font face used for strip texts, by default bold
-#' @param axis_title_face the font face used for axis titles, by default bold
-#' @param fontscale_factor the font scaling factor used, by default 1.2
+#' @param subtitle_face the font face used for subtitles, by default plain
+#' @param strip_text_face the font face used for strip texts, by default plain
+#' @param axis_title_face the font face used for axis titles, by default plain
+#' @param fontscale_factor the font scaling factor used, by default 1.0
 #' @inheritDotParams theme_kth
 #' @export
-theme_kth_figtree <- function(
-  base_family="Figtree-Light",
+theme_kth_neo <- function(
+  base_family="Figtree Light",
   plot_title_family="Figtree",
-  subtitle_face = "bold",
-  strip_text_face = "bold",
-  axis_title_face = "bold", fontscale_factor = 1.2, ...)
+  subtitle_face = "plain",
+  strip_text_face = "plain",
+  axis_title_face = "plain", fontscale_factor = 1.1, ...)
 {
     theme_kth(
       base_family = base_family, plot_title_family = plot_title_family,
       subtitle_face = subtitle_face, strip_text_face = strip_text_face,
       axis_title_face = axis_title_face,
       fontscale_factor = fontscale_factor, ...) +
-    theme(legend.title = element_text(face = "bold"))
+    theme(legend.title = element_text(face = "plain"))
 }

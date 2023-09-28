@@ -1,6 +1,6 @@
 #' Theme and Theme Components for 'ggplot2' for KTH's graphical profile
 #'
-#' The core theme: `theme_kth` uses Open Sans
+#' The core themes: `theme_kth_neo` uses Figtree and `theme_kth` uses Open Sans
 #'
 #' There is an option `ktheme.loadfonts` which -- if set to `TRUE` -- will
 #' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript

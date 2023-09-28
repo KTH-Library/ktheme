@@ -1,0 +1,4 @@
+name: kth-neo Template
+description: >
+  R Markdown template for the graphical profile used by KTH
+create_dir: false

@@ -1,7 +1,7 @@
 Package: ktheme
 Type: Package
 Title: KTH Profile Theme for 'ggplot2'
-Version: 0.2.0
+Version: 0.2.1
 Authors@R:
     as.person(c(
         "Gaël Serge Dubus <dubus@kth.se> [aut]",

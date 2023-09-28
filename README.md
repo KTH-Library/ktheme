@@ -5,10 +5,9 @@
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://raster.shields.io/badge/lifecycle-experimental-orange.png)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R-CMD-check](https://github.com/KTH-Library/ktheme/workflows/R-CMD-check/badge.svg)](https://github.com/KTH-Library/ktheme/actions)
 [![R-CMD-check](https://github.com/KTH-Library/ktheme/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/KTH-Library/ktheme/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 This is an R package providing some styling resources for web content
@@ -18,27 +17,21 @@ of Technology.
 It is heavily inspired by <https://github.com/hrbrmstr/hrbrthemes>. Most
 of the graphical design considerations, the package structure used and
 the functions are either ripped directly or modified slightly from that
-package adapting it to [KTH’s graphical
+package. The styling assets and resources are different, though (fonts,
+templates, color palettes etc) and adapted to [KTH’s graphical
 profile](https://intra.kth.se/en/administration/kommunikation/grafiskprofil)
-
-The styling assets and resources are different, though (fonts,
-templates, color palettes etc).
-
-## Content
-
-This package installs various styling assets as outlined below.
 
 ### Fonts
 
 It includes fonts in the two main font families used in the graphical
 profile of KTH:
 
-- Open Sans (primary font; to be used for web content and for text
-  inside plots)
-- Georgia (KTH has a license to use this MS font)
+- Figtree (SIL-licensed font)
+- Open Sans (used to be the primary font; to be used for web content and
+  for text inside plots)
 - Open Sans Condensed is a narrow variant of Open Sans (looks even
   better in plots)
-- Figtree (SIL-licensed font)
+- Georgia (KTH has a license to use this MS font)
 
 ### Templates for rmarkdown content
 
@@ -49,7 +42,7 @@ Two templates are provided for styling `rmarkdown` authored content:
 
 ### Theme for ggplot2
 
-It also provides a `theme_kth()` function which can be used to style
+It also provides a `theme_kth_neo()` function which can be used to style
 ggplots.
 
 ## Installation
@@ -64,7 +57,7 @@ devtools::install_github("KTH-Library/ktheme")
 
 ## Usage
 
-A helper function is availble for system-wide install of fonts on Linux
+A helper function is available for system-wide install of fonts on Linux
 OSes:
 
 ``` r
@@ -84,23 +77,25 @@ library(Cairo)
 
 # Color palettes
 
-Two color palettes are provided; the “standard” and the “digital”
-palette.
+Three color palettes are provided; the new standard “kth_palette_neo()”,
+the previous standard “kth_palette()” and the previous
+“kth_palette_digital()” palette.
 
-Both palettes take their starting point in a set of colors originating
-from the [KTH signature
+Palettes take their starting point in a set of colors used (at different
+points in time), currently originating from the [KTH signature
 colors](https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profilfarger-1.845077).
 
 These color palette can be used to color qualitative data, sequential
 data and diverging data.
 
-- qualitative palette for nominal or unordered categorical values (using
-  the primary KTH profile color (blue), followed by the four secondary
+- qualitative palette for use with nominal or unordered categorical
+  values (using the primary KTH profile color (blue), followed by
   profile colors, each color available in triplets (darker tone, lighter
-  tone, medium tone), thus providing a total of 5 x 3 = 15 colors)
+  tone, medium tone), thus providing a total of 6 x 3 = 18 colors)
 - sequential palette for quantitative magnitudes - high/low values - or
-  for ordered categorical data (the primary color in 5 stepped
-  variations - from the strongest tone stepping towards a neutral gray)
+  for ordered categorical data (the “kth_palette” variant uses the
+  primary color in 5 stepped variations - from the strongest tone
+  stepping towards a neutral gray)
 - diverging palette for use with quantitative values centered around
   some point - or centered ordered categorical data of that same nature
   (the primary color is used on one end of the palette and the closest
@@ -140,7 +135,7 @@ palette_kth_neo(n = 18) %>% unname %>% show_pal(ncol = 6, nrow = 3)
 
 ``` r
 
-# sequential categorical offers a maximum of 7 steps (primary color, fading towards gray)
+# sequential categorical offers a maximum of 5 steps (primary color, fading towards gray)
 palette_kth_neo(n = 5, type = "seq") %>% unname %>% show_pal()
 ```
 
@@ -174,7 +169,7 @@ media](https://intra.kth.se/administration/kommunikation/grafiskprofil/profilfar
 ``` r
 
 # all 5 colors (primary and secondary signature colors) in triplets (faded towards gray, "strong", "light" and "medium")
-palette_kth_digital(n = 15) %>% unname %>% show_pal(ncol = 5, nrow = 3)
+palette_kth_digital(n = 15) %>% unname %>% show_pal(nrow = 5, ncol = 3)
 ```
 
 ![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
@@ -195,10 +190,10 @@ palette_kth_digital(n = 7, type = "div") %>% unname %>% show_pal(labels = FALSE,
 
 ![](man/figures/README-unnamed-chunk-4-3.png)<!-- -->
 
-# Usage
+# Usage example
 
-Here are usage examples showing plots made using the different KTH color
-palettes and the Open Sans font.
+Here are usage examples showing (gg)plots made using the different KTH
+colour palettes with the Figtree font.
 
 A plain vanilla scatter plot:
 
@@ -209,7 +204,7 @@ ggplot(mtcars, aes(mpg, wt)) +
     title="KTH styled ggplot2 scatterplot example",
     subtitle="A plot that is only useful for demonstration purposes",
     caption="Caption goes here!") + 
-  theme_kth_figtree()
+  theme_kth_neo()
 ```
 
 ![](man/figures/README-unnamed-chunk-5-1.png)<!-- -->
@@ -221,7 +216,7 @@ Using the KTH palette, qualitative coloring:
 ggplot(iris, aes(Species, Sepal.Length)) + 
   geom_boxplot(aes(fill = Species)) +
   scale_fill_kth() +
-  theme_kth_figtree() +
+  theme_kth_neo() +
   theme(legend.position = "top")
 ```
 
@@ -232,7 +227,7 @@ ggplot(iris, aes(Species, Sepal.Length)) +
 ggplot(iris, aes(Sepal.Length, Sepal.Width)) + 
   geom_point(aes(color = Species)) +
   scale_color_kth() +
-  theme_kth_figtree()+
+  theme_kth_neo() +
   theme(legend.position = "top")
 ```
 
@@ -241,7 +236,8 @@ ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
 Another example using demo data:
 
 ``` r
-ggplot(mpg, aes(displ, hwy)) +
+gg <- 
+  ggplot(mpg, aes(displ, hwy)) +
   geom_jitter(aes(color=class, fill=class), size=3, shape=21, alpha=1/2) +
   scale_x_continuous(expand=c(0,0), limits=c(1, 8), breaks=1:8) +
   scale_y_continuous(expand=c(0,0), limits=c(10, 50)) +
@@ -253,16 +249,19 @@ ggplot(mpg, aes(displ, hwy)) +
     subtitle="These plots show some example data",
     caption="Source: ktheme R package"
   ) +
-  theme_kth_figtree() +
+  theme_kth_neo() +
   theme(legend.position="none")
+
+flush_ticks(gg)
+#> Warning: Vectorized input to `element_text()` is not officially supported.
+#> ℹ Results may be unexpected or may change in future versions of ggplot2.
+#> Vectorized input to `element_text()` is not officially supported.
+#> ℹ Results may be unexpected or may change in future versions of ggplot2.
+#> theme(axis.text.x=element_text(hjust=c(0, rep(0.5, 6), 1))) +
+#> theme(axis.text.y=element_text(vjust=c(0, rep(0.5, 3), 1)))
 ```
 
 ![](man/figures/README-unnamed-chunk-7-1.png)<!-- -->
-
-``` r
-
-#flush_ticks(gg)
-```
 
 Diverging colors:
 
@@ -284,7 +283,7 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
     values = c("above" = pdiv[1], "below" = pdiv[2])) +
   labs(subtitle="Z score (normalised) mileage for mtcars'",
     title= "Horizontal bar graph", caption="KTH styled graph") +
-  theme_kth_figtree() +
+  theme_kth_neo() +
   theme(
     axis.title.y=element_blank(),
     axis.title.x=element_blank(),
@@ -293,8 +292,9 @@ ggplot(cars, aes(x=reorder(brand, mpg_z_score), y=mpg_z_score, label=mpg_z_score
   coord_flip()
 ```
 
-![](man/figures/README-unnamed-chunk-8-1.png)<!-- --> Sequential
-discrete colors versus qualitative discrete colors:
+![](man/figures/README-unnamed-chunk-8-1.png)<!-- -->
+
+Sequential discrete colors versus qualitative discrete colors:
 
 ``` r
 library(patchwork)
@@ -304,11 +304,14 @@ dsamp <- diamonds[1 + 1:1000 * 50, ]
 
 gg <- ggplot(dsamp, aes(carat, price, color = cut)) + geom_point()
 
-gg1 <- gg + scale_color_manual(values = pdiv) + theme_kth_figtree() + scale_y_comma()
+gg1 <- gg + scale_color_manual(values = pdiv) + 
+  theme_kth_neo() + scale_y_comma()
 
-gg2 <- gg + scale_color_kth() + theme_kth_figtree() + scale_y_comma()
+gg2 <- gg + scale_color_kth() + 
+  theme_kth_neo() + scale_y_comma()
 
-gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + theme_kth_figtree() + scale_y_comma() + theme(legend.position="bottom")
+gg3 <- gg + facet_wrap(~cut, ncol = 5) + scale_color_manual(values = pdiv) + 
+  theme_kth_neo() + scale_y_comma() + theme(legend.position="bottom")
 
 gg1 + gg2
 ```
@@ -349,8 +352,8 @@ geom_text(aes(label=paste0("n=", n)), nudge_y=3) +
 labs(x="Vehicle category", y="Observations (n)",
      title="Seminal ggplot2 bar chart example",
      subtitle="A plot that is only useful for demonstration purposes",
-     caption="A demo of theme_kth_figtree") +
-theme_kth_figtree() +
+     caption="A demo of theme_kth_neo") +
+theme_kth_neo() +
 scale_fill_kth() +
 theme(axis.text.y=element_blank())
 ```

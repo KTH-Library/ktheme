@@ -341,13 +341,13 @@ palette_kth_digital_info <- function() {
 
 #' A qualitative color palette with colors from KTH's graphical profile
 #'
+#'@param pal the palette to use, by default palette_kth_neo()
 #' @export
 #' @importFrom scales manual_pal
 #' @examples
 #' library(scales)
 #' scales::show_col(kth_pal()(5))
-kth_pal <- function() {
-  pal <- palette_kth_neo()
+kth_pal <- function(pal = palette_kth_neo()) {
   names(pal) <- NULL
   manual_pal(pal)
 }

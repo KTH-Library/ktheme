@@ -12,9 +12,10 @@
   }
 
   fnt <- extrafont::fonttable()
-  if (!any(grepl("Open[ ]Sans|Georgia", fnt$FamilyName))) {
-    packageStartupMessage("NOTE: Either Open Sans or Georgia fonts are required to use these themes.")
+  if (!any(grepl("Open[ ]Sans|Georgia|Figtree", fnt$FamilyName))) {
+    packageStartupMessage("NOTE: Either Open Sans or Georgia fonts or Figtree are required to use these themes.")
     packageStartupMessage("      Please use ktheme::import_open_sans() to install Open Sans and")
+    packageStartupMessage("      please use ktheme::import_figtree() to install Figtree and")
     packageStartupMessage("      if Arial Narrow is not on your system, please see https://bit.ly/arialnarrow")
   } # nocov end
 

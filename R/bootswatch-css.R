@@ -139,20 +139,6 @@ scss_variables_bs5 <- function(pal = palette_kth_neo) {
 
   hexes <- hexes_neo()
 
-  # hexes <- list(
-  #   blue = "#004791", ## KTH-blå
-  #   indigo = "#000061", # Marinblå
-  #   purple = "#78001A", # Mörk tegel
-  #   pink = "#FFCCC4", # Ljus tegel;
-  #   red = "#E86A58", # Tegel
-  #   orange = "#A65900", # Mörkgul
-  #   yellow = "#FFBE00", # Gul
-  #   green = "#4DA061", # Grön
-  #   teal = "#339C9C", # Turkos
-  #   cyan = "#6298D2", # Himmelsblå
-  #   sand = "#EBE5E0" # Sand
-  # )
-
   cols <- c(
     "white",
     sprintf("gray-%s00", 1:9),
@@ -176,22 +162,21 @@ scss_variables_bs5 <- function(pal = palette_kth_neo) {
 
     # profile colors
     css_colors("blue", hexes$blue),
-    css_colors("indigo", hexes$indigo), #pal["lightblue80"]),
-    css_colors("purple", hexes$purple), #pal["cerise80"]),
-    css_colors("pink", hexes$pink), #pal["cerise40"]),
-    css_colors("red", hexes$red), #pal["cerise"]),
-    css_colors("orange", hexes$orange), #pal["olive"]),
-    css_colors("yellow", hexes$yellow), #pal["olive40"]),
-    css_colors("green", hexes$green), #"#007fae"), #    css_colors("green", pal["olive80"]),
-    css_colors("teal", hexes$teal), #pal["lightblue40"]),
-    css_colors("cyan", hexes$cyan) #pal["lightblue80"])
+    css_colors("indigo", hexes$indigo),
+    css_colors("purple", hexes$purple),
+    css_colors("pink", hexes$pink),
+    css_colors("red", hexes$red),
+    css_colors("orange", hexes$orange),
+    css_colors("yellow", hexes$yellow),
+    css_colors("green", hexes$green),
+    css_colors("teal", hexes$teal),
+    css_colors("cyan", hexes$cyan)
   )
 
   cat(paste0(collapse = "\n", purrr::flatten(colors)))
 
   font_kth <- "Figtree"
 
-  # $font-family-sans-serif:      "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
   fonts <- paste0(
     '$font-family-sans-serif:      \"', font_kth, '\", -apple-system, BlinkMacSystemFont, ',
     '"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", ',
