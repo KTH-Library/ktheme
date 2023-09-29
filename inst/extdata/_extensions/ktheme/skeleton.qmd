@@ -20,9 +20,9 @@ author:
     url: https://kth.se
     affiliations:
       - name: KTH Library
-        address: Osquars backe 30
+        address: Osquars backe 31
         city: Stockholm
-        postal-code: 100 00
+        postal-code: 114 28
         url: kth.se/biblioteket
 highlight-style: pygments
 fig-cap-location: top
@@ -131,7 +131,20 @@ You can add options to executable code like this
 
 ```{r}
 #| echo: false
-2 * 2
+library(dplyr)
+library(ggplot2)
+
+count(mpg, class) %>%
+ggplot(aes(class, n)) +
+geom_col(aes(fill = class)) +
+geom_text(aes(label=paste0("n=", n)), nudge_y=3) +
+labs(x="Vehicle category", y="Observations (n)",
+     title="Seminal ggplot2 bar chart example",
+     subtitle="A plot that is only useful for demonstration purposes",
+     caption="A demo of theme_kth_neo") +
+theme_kth_neo() +
+scale_fill_kth() +
+theme(axis.text.y=element_blank())
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
