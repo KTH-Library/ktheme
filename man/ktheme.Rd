@@ -5,7 +5,7 @@
 \alias{ktheme}
 \title{Theme and Theme Components for 'ggplot2' for KTH's graphical profile}
 \description{
-The core theme: \code{theme_kth} uses Open Sans
+The core themes: \code{theme_kth_neo} uses Figtree and \code{theme_kth} uses Open Sans
 }
 \details{
 There is an option \code{ktheme.loadfonts} which -- if set to \code{TRUE} -- will

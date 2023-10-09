@@ -22,7 +22,7 @@ show_pal(
 
 \item{cex_label}{size of printed labels, works the same as cex parameter of plot()}
 
-\item{ncol}{number of columns, defaults to the matching the number of colors provided}
+\item{ncol}{number of columns, defaults to the matching the number of colours provided}
 
 \item{nrow}{number of rows, defaults to 1}
 }

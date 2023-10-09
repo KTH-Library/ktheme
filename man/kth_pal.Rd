@@ -4,7 +4,10 @@
 \alias{kth_pal}
 \title{A qualitative color palette with colors from KTH's graphical profile}
 \usage{
-kth_pal()
+kth_pal(pal = palette_kth_neo())
+}
+\arguments{
+\item{pal}{the palette to use, by default palette_kth_neo()}
 }
 \description{
 A qualitative color palette with colors from KTH's graphical profile
