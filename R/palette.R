@@ -114,7 +114,7 @@ hexes_neo <- function() {
 #'
 #' This function aligns its signature with RColorBrewer::color.pal()
 #'
-#' @param n number of colors to use (1..5), default is to return all five
+#' @param n number of colors to use (1..6 x 3), default is to return
 #' @param name name of palette
 #' @param type nature of data, default "qual" for qualitative or "seq" for
 #' sequential or "div" for diverging
@@ -125,8 +125,9 @@ hexes_neo <- function() {
 #' @importFrom purrr map_chr
 #' @export
 #' @examples
-#' palette_kth_neo(5)  # return the primary color in the KTH palette
-palette_kth_neo <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
+#' palette_kth_neo(12)  # return the primary color in the KTH palette
+palette_kth_neo <- function(n = 12, name = "KTH", type = c("qual", "seq", "div")) {
+
   hexes <- hexes_neo()
 
   if (name != "KTH")
@@ -318,7 +319,7 @@ palette_kth_info <- function() {
 palette_kth_neo_info <- function() {
   data.frame(
     palette_name = rep("KTH", 3),
-    maxcolors = c(15, 5, 7),
+    maxcolors = c(18, 5, 7),
     type = c("qual", "seq", "div"),
     colorblind = FALSE
   )
@@ -426,3 +427,24 @@ sdg_colors <- function() {
     mutate(color = toupper(.data$color)) %>%
     mutate(long_desc = paste0(.data$long_desc, "."))
 }
+
+#' KTH Profile colors
+#'
+#' Get the full set of KTH Profile colors (RGB hex) or a specific named color
+#'
+#' @param color_name the color name(s), by default missing
+#' @return a vector of RGB hex strings for requested named colors
+#' @export
+kth_colors <- function(color_name) {
+
+  my_pal <- palette_kth_neo(18)
+  my_colors <- names(my_pal)
+
+  if (missing(color_name) || !all(color_name %in% my_colors)) {
+    stop("Available color names are:\n", paste(collapse = ", ", names(my_pal)))
+  }
+
+  my_pal[color_name] |> unname()
+
+}
+
