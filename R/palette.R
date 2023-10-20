@@ -426,3 +426,12 @@ sdg_colors <- function() {
     mutate(color = toupper(.data$color)) %>%
     mutate(long_desc = paste0(.data$long_desc, "."))
 }
+
+#' A data frame with colors for OA statuses
+#'
+#' @returns A data frame with columns oa_status, oa_color
+#' @export
+unpaywall_colors <- function() {
+  data.frame(oa_status = c("Diamond", "Gold", "Hybrid", "Green", "Not OA"),
+             oa_color = c("#EBEBEB", "#F9BC01", "#8D4EB4", "#20E168", "#AAAAAA"))
+}
