@@ -4,10 +4,10 @@
 \alias{palette_kth_neo}
 \title{KTH color palette with 5 qualitative colors}
 \usage{
-palette_kth_neo(n = 10, name = "KTH", type = c("qual", "seq", "div"))
+palette_kth_neo(n = 12, name = "KTH", type = c("qual", "seq", "div"))
 }
 \arguments{
-\item{n}{number of colors to use (1..5), default is to return all five}
+\item{n}{number of colors to use (1..6 x 3), default is to return}
 
 \item{name}{name of palette}
 
@@ -24,5 +24,5 @@ This palette is taken from https://intra.kth.se/en/administration/kommunikation/
 This function aligns its signature with RColorBrewer::color.pal()
 }
 \examples{
-palette_kth_neo(5)  # return the primary color in the KTH palette
+palette_kth_neo(12)  # return the primary color in the KTH palette
 }

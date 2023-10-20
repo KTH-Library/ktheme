@@ -14,3 +14,4 @@
 ^\.github$
 
 ^data-raw$
+^CITATION\.cff$
