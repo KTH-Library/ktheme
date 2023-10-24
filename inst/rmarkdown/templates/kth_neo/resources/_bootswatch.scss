@@ -4,9 +4,19 @@
 
 // Variables
 
-$web-font-path: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,700;1,400&display=swap" !default;
+$web-font-path: "https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,700;1,400&display=swap";
 @if $web-font-path {
   @import url($web-font-path);
+}
+
+$web-font-figtree: "figtree.css" !default;
+@if $web-font-figtree {
+  @import url($web-font-figtree);
+}
+
+$web-font-georgia: "georgia.css" !default;
+@if $web-font-georgia {
+  @import url($web-font-georgia);
 }
 
 // Navs
