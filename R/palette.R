@@ -453,11 +453,20 @@ kth_colors <- function(color_name) {
 #' @returns A data frame with columns oa_status, oa_color
 #' @export
 unpaywall_colors <- function() {
-  kth_colors <- palette_kth_neo(18, type = "qual")
   data.frame(oa_status = c("Diamond", "Gold", "Hybrid", "Green", "Not OA"),
-             oa_color = c(kth_colors["lightteal"],
-                          kth_colors["yellow"],
-                          kth_colors["red"],
-                          kth_colors["green"],
-                          kth_colors["darkgray"]))
+             oa_color = c(kth_colors(c("lightteal",
+                                       "yellow",
+                                       "red",
+                                       "green",
+                                       "darkgray"))))
+}
+
+#' A palette with colors for OA statuses
+#'
+#' @returns named vector
+#' @export
+pal_unpaywall <- function() {
+  pal <- palette_kth_neo(18)[c("lightteal", "yellow", "red", "green", "darkgray")]
+  names(pal) <- c("Diamond", "Gold", "Hybrid", "Green", "Not OA")
+  pal
 }
