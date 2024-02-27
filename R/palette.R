@@ -458,15 +458,14 @@ unpaywall_colors <- function() {
                                        "yellow",
                                        "red",
                                        "green",
-                                       "darkgray"))))
+                                       "gray"))))
 }
 
 #' A palette with colors for OA statuses
-#'
+#' @importFrom stats setNames
 #' @returns named vector
 #' @export
 pal_unpaywall <- function() {
-  pal <- palette_kth_neo(18)[c("lightteal", "yellow", "red", "green", "darkgray")]
-  names(pal) <- c("Diamond", "Gold", "Hybrid", "Green", "Not OA")
-  pal
+  unpaywall_colors()$oa_color |>
+    setNames(unpaywall_colors()$oa_status)
 }
