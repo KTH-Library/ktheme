@@ -142,7 +142,9 @@ kth_neo <- function(number_sections = FALSE,
     version = "0.1.0",
     system.file("rmarkdown", "templates", "kth_neo", "resources", package = "ktheme"),
     # script="rainbow-custom.min.js",
-    stylesheet = c("bootstrap.css", "bootstrap-icons.css")
+    stylesheet = c("bootstrap.css", "bootstrap-icons.css",
+                   "bootstrap-icons.json") #, "custom.min.css", "custom.js",
+#                   "figtree.css", "georgia.css")
   )
 
   extra_dependencies <- append(extra_dependencies, list(dep))
