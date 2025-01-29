@@ -454,5 +454,18 @@ kth_colors <- function(color_name) {
 #' @export
 unpaywall_colors <- function() {
   data.frame(oa_status = c("Diamond", "Gold", "Hybrid", "Green", "Not OA"),
-             oa_color = c("#EBEBEB", "#F9BC01", "#8D4EB4", "#20E168", "#AAAAAA"))
+             oa_color = c(kth_colors(c("lightteal",
+                                       "yellow",
+                                       "red",
+                                       "green",
+                                       "gray"))))
+}
+
+#' A palette with colors for OA statuses
+#' @importFrom stats setNames
+#' @returns named vector
+#' @export
+pal_unpaywall <- function() {
+  unpaywall_colors()$oa_color |>
+    setNames(unpaywall_colors()$oa_status)
 }
