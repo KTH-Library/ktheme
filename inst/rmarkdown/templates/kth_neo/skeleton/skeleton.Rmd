@@ -9,7 +9,7 @@ og_description: "A modest size description of the content"
 og_image: "https\\://example.com/open/graph/imageURLfor/this"
 output:
   ktheme::kth_neo:
-  toc: true
+    toc: true
 ---
 
 ```{r include=FALSE}
