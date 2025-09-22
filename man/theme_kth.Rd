@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-kth.R
 \name{theme_kth}
 \alias{theme_kth}
-\title{A [ggplot2] theme with default for the KTH graphical profile.}
+\title{A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile.}
 \usage{
 theme_kth(
   base_family = "Open Sans",
@@ -53,22 +53,22 @@ theme_kth(
 
 \item{axis_title_family, axis_title_face, axis_title_size}{axis title font family, face and size}
 
-\item{axis_title_just}{axis title font justification, one of `[blmcrt]`}
+\item{axis_title_just}{axis title font justification, one of \verb{[blmcrt]}}
 
-\item{plot_margin}{plot margin (specify with [ggplot2::margin()])}
+\item{plot_margin}{plot margin (specify with \code{\link[ggplot2:element]{ggplot2::margin()}})}
 
-\item{grid_col, axis_col}{grid & axis colors; both default to `#cccccc`}
+\item{grid_col, axis_col}{grid & axis colors; both default to \verb{#cccccc}}
 
-\item{grid}{panel grid (`TRUE`, `FALSE`, or a combination of `X`, `x`, `Y`, `y`)}
+\item{grid}{panel grid (\code{TRUE}, \code{FALSE}, or a combination of \code{X}, \code{x}, \code{Y}, \code{y})}
 
-\item{axis}{add x or y axes? `TRUE`, `FALSE`, "`xy`"}
+\item{axis}{add x or y axes? \code{TRUE}, \code{FALSE}, "\code{xy}"}
 
-\item{ticks}{ticks if `TRUE` add ticks}
+\item{ticks}{ticks if \code{TRUE} add ticks}
 
 \item{fontscale_factor}{scaling factor for font sizes, by default 1}
 }
 \description{
-A [ggplot2] theme with default for the KTH graphical profile.
+A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile.
 }
 \examples{
 \dontrun{

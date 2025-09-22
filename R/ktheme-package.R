@@ -1,22 +1,18 @@
-#' Theme and Theme Components for 'ggplot2' for KTH's graphical profile
+#' Theme and Theme Components for ggplot2 for KTH's graphical profile
 #'
-#' The core themes: `theme_kth_neo` uses Figtree and `theme_kth` uses Open Sans
+#' The core themes: `theme_kth_neo` uses Figtree and `theme_kth` uses Open Sans.
+#' There is an option `ktheme.loadfonts` which – if set to `TRUE` – will
+#' call `extrafont::loadfonts()` to register non‑core fonts with R PDF &
+#' PostScript devices.  On Windows the same function registers the fonts
+#' with the Windows graphics device.
 #'
-#' There is an option `ktheme.loadfonts` which -- if set to `TRUE` -- will
-#' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
-#' devices. If you are running under Windows, the package calls the same function
-#' to register non-core fonts with the Windows graphics device.
-#'
-#' @md
-#' @name ktheme
-#' @docType package
 #' @keywords internal
 #' @import ggplot2 grid scales extrafont grDevices
 #' @importFrom magrittr %>%
 #' @importFrom gdtools set_dummy_conf
 #' @import rmarkdown knitr htmltools
 #' @importFrom tools file_path_sans_ext
-NULL
+"_PACKAGE"
 
 #' ktheme exported operators
 #'
