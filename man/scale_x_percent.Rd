@@ -146,9 +146,9 @@ scales, "top" or "bottom" for horizontal scales}
 want to do that). \code{NULL} means no labels.}
 
 \item{accuracy, scale, prefix, suffix, big.mark, decimal.mark, trim}{See
-[scales::comma_format()] or [scales::percent_format()]}
+\code{\link[scales:comma]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}
 
-\item{...}{passed on to [scales::comma_format()] or [scales::percent_format()]}
+\item{...}{passed on to \code{\link[scales:comma]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}
 }
 \description{
 The \verb{_comma} ones set comma format for axis text and \code{expand=c(0,0)} (you need to set limits).
