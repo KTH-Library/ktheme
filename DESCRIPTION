@@ -44,5 +44,5 @@ Imports:
 Remotes:
     wch/Rttf2pt1,
     wch/extrafont
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
