@@ -6,10 +6,10 @@
 \format{
 A data frame with 17 rows and 4 variables:
 \describe{
-  \item{\code{goal}}{integer number for the SDG, 1-17}
-  \item{\code{color}}{character RGB color}
-  \item{\code{short_desc}}{character Short description of SDG}
-  \item{\code{long_desc}}{character Long description of SDG}
+\item{\code{goal}}{integer number for the SDG, 1-17}
+\item{\code{color}}{character RGB color}
+\item{\code{short_desc}}{character Short description of SDG}
+\item{\code{long_desc}}{character Long description of SDG}
 }
 }
 \usage{

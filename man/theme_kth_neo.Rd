@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-kth.R
 \name{theme_kth_neo}
 \alias{theme_kth_neo}
-\title{A [ggplot2] theme with default for the KTH graphical profile using the Figtree font .}
+\title{A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile using the Figtree font .}
 \usage{
 theme_kth_neo(
   base_family = "Figtree Light",
@@ -37,15 +37,15 @@ theme_kth_neo(
     \item{\code{strip_text_family,strip_text_face,strip_text_size}}{facet label font family, face and size}
     \item{\code{caption_family,caption_face,caption_size,caption_margin}}{plot caption family, face, size and margin}
     \item{\code{axis_title_family,axis_title_face,axis_title_size}}{axis title font family, face and size}
-    \item{\code{axis_title_just}}{axis title font justification, one of `[blmcrt]`}
-    \item{\code{plot_margin}}{plot margin (specify with [ggplot2::margin()])}
-    \item{\code{grid_col,axis_col}}{grid & axis colors; both default to `#cccccc`}
-    \item{\code{grid}}{panel grid (`TRUE`, `FALSE`, or a combination of `X`, `x`, `Y`, `y`)}
+    \item{\code{axis_title_just}}{axis title font justification, one of \verb{[blmcrt]}}
+    \item{\code{plot_margin}}{plot margin (specify with \code{\link[ggplot2:element]{ggplot2::margin()}})}
+    \item{\code{grid_col,axis_col}}{grid & axis colors; both default to \verb{#cccccc}}
+    \item{\code{grid}}{panel grid (\code{TRUE}, \code{FALSE}, or a combination of \code{X}, \code{x}, \code{Y}, \code{y})}
     \item{\code{axis_text_size}}{font size of axis text}
-    \item{\code{axis}}{add x or y axes? `TRUE`, `FALSE`, "`xy`"}
-    \item{\code{ticks}}{ticks if `TRUE` add ticks}
+    \item{\code{axis}}{add x or y axes? \code{TRUE}, \code{FALSE}, "\code{xy}"}
+    \item{\code{ticks}}{ticks if \code{TRUE} add ticks}
   }}
 }
 \description{
-A [ggplot2] theme with default for the KTH graphical profile using the Figtree font .
+A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile using the Figtree font .
 }
