@@ -40,10 +40,9 @@ Imports:
     dplyr,
     stringr,
     farver,
-    hunspell
-Remotes:
-    wch/Rttf2pt1,
-    wch/extrafont
+    hunspell,
+    Rttf2pt1,
+    extrafont
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
