@@ -78,33 +78,31 @@ palette_kth <- function(n = 10, name = "KTH", type = c("qual", "seq", "div")) {
 
 hexes_neo <- function() {
   list(
+    #här överst "primärfärger"
     blue = "#004791", ## KTH-blå
-    indigo = "#000061", # Marinblå
-    purple = "#78001A", # Mörk tegel
-    pink = "#FFCCC4", # Ljus tegel
-    red = "#E86A58", # Tegel
-    orange = "#A65900", # Mörkgul
-    yellow = "#FFBE00", # Gul
-    green = "#4DA061", # Grön
-    teal = "#339C9C", # Turkos
-    cyan = "#6298D2", # Himmelsblå
     sand = "#EBE5E0", # Sand
+    cyan = "#6298D2", # Himmelsblå
+    darkblue = "#000061", # Marinblå
     lightblue = "#DEF0FF", # Ljusblå
     digitalblue = "#0029ED", # Digitalblå (undvik)
-    darkteal = "#1C434C", # Mörkturkos
+    # här under "funktionsfärger"
     darkred = "#78001A", # Mörk tegel
+    red = "#E86A58", # Tegel
+    pink = "#FFCCC4", # Ljus tegel
     darkyellow = "#A65900", # Mörkgul
-    darkgray = "#323232", # Mörkgrå
-    offblack = "#212121", # Bruten svart
-    offwhite = "#FCFCFC", # Bruten vit
-    darkblue = "#000061", # Marinblå
+    yellow = "#FFBE00", # Gul
+    lightyellow = "#FFF0B0", # Ljusgul
     darkgreen = "#0D4A21", # Mörkgrön
+    green = "#4DA060", # Grön
     lightgreen = "#C7EBBA", # Ljusgrön
+    darkteal = "#1C434C", # Mörkturkos
+    teal = "#339C9C", # Turkos
     lightteal = "#B2E0E0", # Ljusturkos
-    lightyellow = "#FFF080", # Ljusgul
-    lightgray = "#E6E6E6", # Ljusgrå
+    darkgray = "#323232", # Mörkgrå
     gray = "#A5A5A5", # Grå
-    darkgray = "#323232" # Mörkgrå
+    lightgray = "#E6E6E6", # Ljusgrå
+    offblack = "#212121", # Bruten svart, för webtext
+    offwhite = "#FCFCFC" # Bruten vit, för webtext
   )
 }
 
