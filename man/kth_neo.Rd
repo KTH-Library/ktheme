@@ -63,8 +63,7 @@ built-in styles include "tango", "pygments", "kate", "monochrome",
 Two custom styles are also included, "arrow", an accessible color scheme,
 and "rstudio", which mimics the default IDE theme. Alternatively, supply a
 path to a \samp{.theme} to use
-\href{https://pandoc.org/MANUAL.html#syntax-highlighting}{a custom Pandoc
-style}. Note that custom theme requires Pandoc 2.0+.
+\href{https://pandoc.org/MANUAL.html#syntax-highlighting}{a custom Pandoc style}. Note that custom theme requires Pandoc 2.0+.
 
 Pass \code{NULL} to prevent syntax highlighting.}
 
@@ -88,7 +87,7 @@ document (typically created using the \code{\link[rmarkdown]{includes}} function
 
 \item{lib_dir}{Directory to copy dependent HTML libraries (e.g. jquery,
 bootstrap, etc.) into. By default this will be the name of the document with
-\code{_files} appended to it.}
+\verb{_files} appended to it.}
 
 \item{md_extensions}{Markdown extensions to be added or removed from the
 default definition of R Markdown. See the \code{\link[rmarkdown]{rmarkdown_format}} for
