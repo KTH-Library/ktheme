@@ -44,12 +44,15 @@ is.formula <- function (x) { inherits(x, "formula") }
 #' @param position The position of the axis. "left" or "right" for vertical
 #' scales, "top" or "bottom" for horizontal scales
 #' @param sec.axis specify a secondary axis
+#' @param n.breaks number of breaks (passed to [ggplot2::continuous_scale()])
+#' @param guide axis guide; default `waiver()` uses ggplot2's standard guide
 #' @export
 scale_x_percent <- function(name = waiver(), breaks = waiver(),
-                            minor_breaks = waiver(),
+                            minor_breaks = waiver(), n.breaks = NULL,
                             limits = NULL, expand = c(0.01,0), oob = censor,
                             na.value = NA_real_, trans = "identity",
                             position = "bottom", sec.axis = waiver(), labels,
+                            guide = waiver(),
                             accuracy = 1, scale = 100, prefix = "", suffix = "%",
                             big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
 
@@ -75,13 +78,14 @@ scale_x_percent <- function(name = waiver(), breaks = waiver(),
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
+    n.breaks = n.breaks,
     labels = labels,
     limits = limits,
     expand = expand,
     oob = oob,
     na.value = na.value,
     transform = trans,
-    guide = "none",
+    guide = guide,
     position = position,
     super = ScaleContinuousPosition
   ) -> sc
@@ -102,10 +106,11 @@ scale_x_percent <- function(name = waiver(), breaks = waiver(),
 #' @rdname scale_x_percent
 #' @export
 scale_y_percent <- function(name = waiver(), breaks = waiver(),
-                            minor_breaks = waiver(),
+                            minor_breaks = waiver(), n.breaks = NULL,
                             limits = NULL, expand = c(0.01,0), oob = censor,
                             na.value = NA_real_, trans = "identity",
                             position = "left", sec.axis = waiver(), labels,
+                            guide = waiver(),
                             accuracy = 1, scale = 100, prefix = "", suffix = "%",
                             big.mark = " ", decimal.mark = ".", trim = TRUE, ...) {
 
@@ -131,13 +136,14 @@ scale_y_percent <- function(name = waiver(), breaks = waiver(),
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
+    n.breaks = n.breaks,
     labels = labels,
     limits = limits,
     expand = expand,
     oob = oob,
     na.value = na.value,
     transform = trans,
-    guide = "none",
+    guide = guide,
     position = position,
     super = ScaleContinuousPosition
   ) -> sc
@@ -161,11 +167,12 @@ scale_y_percent <- function(name = waiver(), breaks = waiver(),
 #' @param ... passed on to [scales::comma_format()] or [scales::percent_format()]
 #' @export
 scale_x_comma <- function(name = waiver(), breaks = waiver(),
-                          minor_breaks = waiver(),
+                          minor_breaks = waiver(), n.breaks = NULL,
                           limits = NULL,
                           expand = c(0.01,0), oob = censor,
                           na.value = NA_real_, trans = "identity",
                           position = "bottom", sec.axis = waiver(), labels,
+                          guide = waiver(),
                           accuracy = 1, scale = 1, prefix = "", suffix = "",
                           big.mark = ",", decimal.mark = ".", trim = TRUE,
                           ...) {
@@ -193,13 +200,14 @@ scale_x_comma <- function(name = waiver(), breaks = waiver(),
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
+    n.breaks = n.breaks,
     labels = labels,
     limits = limits,
     expand = expand,
     oob = oob,
     na.value = na.value,
     transform = trans,
-    guide = "none",
+    guide = guide,
     position = position,
     super = ScaleContinuousPosition
   ) -> sc
@@ -221,10 +229,11 @@ scale_x_comma <- function(name = waiver(), breaks = waiver(),
 #' @export
 scale_y_comma <- function(name = waiver(),
                           breaks = waiver(),
-                          minor_breaks = waiver(),
+                          minor_breaks = waiver(), n.breaks = NULL,
                           limits = NULL, expand = c(0.01,0), oob = censor,
                           na.value = NA_real_, trans = "identity",
                           position = "left", sec.axis = waiver(), labels,
+                          guide = waiver(),
                           accuracy = 1, scale = 1, prefix = "", suffix = "",
                           big.mark = ",", decimal.mark = ".", trim = TRUE,
                           ...) {
@@ -252,13 +261,14 @@ scale_y_comma <- function(name = waiver(),
     name = name,
     breaks = breaks,
     minor_breaks = minor_breaks,
+    n.breaks = n.breaks,
     labels = labels,
     limits = limits,
     expand = expand,
     oob = oob,
     na.value = na.value,
     transform = trans,
-    guide = "none",
+    guide = guide,
     position = position,
     super = ScaleContinuousPosition
   ) -> sc

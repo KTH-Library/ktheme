@@ -16,3 +16,4 @@
 ^data-raw$
 ^CITATION\.cff$
 ^CLAUDE\.md$
+^\.claude$

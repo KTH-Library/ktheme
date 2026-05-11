@@ -151,7 +151,7 @@ palette_kth_neo <- function(n = 12, name = "KTH", type = c("qual", "seq", "div")
   qual <- c(
     hexes$blue, hexes$yellow, hexes$green, hexes$red, hexes$teal, hexes$gray,
     hexes$lightblue, hexes$lightyellow, hexes$lightgreen, hexes$pink, hexes$lightteal, hexes$sand,
-    hexes$darkblue, hexes$darkyellow, hexes$darkgreen, hexes$purple, hexes$darkteal, hexes$darkgray
+    hexes$darkblue, hexes$darkyellow, hexes$darkgreen, hexes$darkred, hexes$darkteal, hexes$darkgray
   )
   qual <- setNames(qual, c(
     "blue", "yellow", "green", "red", "teal", "gray",
