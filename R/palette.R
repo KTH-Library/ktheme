@@ -80,21 +80,21 @@ hexes_neo <- function() {
   list(
     #här överst "primärfärger"
     blue = "#004791", ## KTH-blå
-    sand = "#EBE5E0", # Sand
+    sand = "#e6e1dd", # Sand
     cyan = "#6298D2", # Himmelsblå
-    darkblue = "#000061", # Marinblå
-    lightblue = "#DEF0FF", # Ljusblå
-    digitalblue = "#0029ED", # Digitalblå (undvik)
+    darkblue = "#08004f", # Marinblå
+    lightblue = "#e0edfc", # Ljusblå
+    digitalblue = "#221dd9", # Digitalblå (undvik)
     # här under "funktionsfärger"
-    darkred = "#78001A", # Mörk tegel
-    red = "#E86A58", # Tegel
+    darkred = "#bf2c17", # Mörk tegel
+    red = "#d8351e", # Tegel
     pink = "#FFCCC4", # Ljus tegel
     darkyellow = "#A65900", # Mörkgul
     yellow = "#FFBE00", # Gul
-    lightyellow = "#FFF0B0", # Ljusgul
-    darkgreen = "#0D4A21", # Mörkgrön
-    green = "#4DA060", # Grön
-    lightgreen = "#C7EBBA", # Ljusgrön
+    lightyellow = "#FFF080", # Ljusgul
+    darkgreen = "#366f43", # Mörkgrön
+    green = "#3f824e", # Grön
+    lightgreen = "#d8ffe7", # Ljusgrön
     darkteal = "#1C434C", # Mörkturkos
     teal = "#339C9C", # Turkos
     lightteal = "#B2E0E0", # Ljusturkos
