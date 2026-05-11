@@ -7,10 +7,6 @@
 \title{Theme and Theme Components for ggplot2 for KTH's graphical profile}
 \description{
 The core themes: \code{theme_kth_neo} uses Figtree and \code{theme_kth} uses Open Sans.
-There is an option \code{ktheme.loadfonts} which – if set to \code{TRUE} – will
-call \code{extrafont::loadfonts()} to register non‑core fonts with R PDF &
-PostScript devices.  On Windows the same function registers the fonts
-with the Windows graphics device.
 }
 \author{
 \strong{Maintainer}: Markus Skyttner \email{markussk@kth.se}
