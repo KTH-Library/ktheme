@@ -11,6 +11,7 @@ scale_x_percent(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
+  n.breaks = NULL,
   limits = NULL,
   expand = c(0.01, 0),
   oob = censor,
@@ -19,6 +20,7 @@ scale_x_percent(
   position = "bottom",
   sec.axis = waiver(),
   labels,
+  guide = waiver(),
   accuracy = 1,
   scale = 100,
   prefix = "",
@@ -33,6 +35,7 @@ scale_y_percent(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
+  n.breaks = NULL,
   limits = NULL,
   expand = c(0.01, 0),
   oob = censor,
@@ -41,6 +44,7 @@ scale_y_percent(
   position = "left",
   sec.axis = waiver(),
   labels,
+  guide = waiver(),
   accuracy = 1,
   scale = 100,
   prefix = "",
@@ -55,6 +59,7 @@ scale_x_comma(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
+  n.breaks = NULL,
   limits = NULL,
   expand = c(0.01, 0),
   oob = censor,
@@ -63,6 +68,7 @@ scale_x_comma(
   position = "bottom",
   sec.axis = waiver(),
   labels,
+  guide = waiver(),
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -77,6 +83,7 @@ scale_y_comma(
   name = waiver(),
   breaks = waiver(),
   minor_breaks = waiver(),
+  n.breaks = NULL,
   limits = NULL,
   expand = c(0.01, 0),
   oob = censor,
@@ -85,6 +92,7 @@ scale_y_comma(
   position = "left",
   sec.axis = waiver(),
   labels,
+  guide = waiver(),
   accuracy = 1,
   scale = 1,
   prefix = "",
@@ -120,6 +128,8 @@ each major break)
 \item A function that given the limits returns a vector of minor breaks.
 }}
 
+\item{n.breaks}{number of breaks (passed to \code{\link[ggplot2:continuous_scale]{ggplot2::continuous_scale()}})}
+
 \item{limits}{A numeric vector of length two providing limits of the scale.
 Use \code{NA} to refer to the existing minimum or maximum.}
 
@@ -144,6 +154,8 @@ scales, "top" or "bottom" for horizontal scales}
 
 \item{labels}{Specifying overrides the default format (i.e. you really don't
 want to do that). \code{NULL} means no labels.}
+
+\item{guide}{axis guide; default \code{waiver()} uses ggplot2's standard guide}
 
 \item{accuracy, scale, prefix, suffix, big.mark, decimal.mark, trim}{See
 \code{\link[scales:comma]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}

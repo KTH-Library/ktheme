@@ -22,13 +22,13 @@ Suggests:
     clipr,
     svglite
 Depends:
-    R (>= 3.2.0)
+    R (>= 3.3.0)
 Imports:
-    ggplot2 (>= 2.2.1),
+    ggplot2 (>= 3.5.0),
     grDevices,
     grid,
     scales,
-    extrafont,
+    systemfonts,
     knitr,
     rmarkdown,
     htmltools,
@@ -40,9 +40,7 @@ Imports:
     dplyr,
     stringr,
     farver,
-    hunspell,
-    Rttf2pt1,
-    extrafont
+    hunspell
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr

@@ -1,18 +1,7 @@
 .onAttach <- function(libname, pkgname) {
 
-  if (.Platform$OS.type == "windows")  { # nocov start
-    if (interactive()) packageStartupMessage("Registering Windows fonts with R")
-    extrafont::loadfonts("win", quiet = TRUE)
-  }
-
-  if (getOption("ktheme.loadfonts", default = FALSE)) {
-    if (interactive()) packageStartupMessage("Registering PDF & PostScript fonts with R")
-    extrafont::loadfonts("pdf", quiet = TRUE)
-    extrafont::loadfonts("postscript", quiet = TRUE)
-  }
-
-  fnt <- extrafont::fonttable()
-  if (!any(grepl("Open[ ]Sans|Georgia|Figtree", fnt$FamilyName))) {
+  fnt <- systemfonts::system_fonts()
+  if (!any(grepl("Open[ ]Sans|Georgia|Figtree", fnt$family))) {
     packageStartupMessage("NOTE: Either Open Sans or Georgia fonts or Figtree are required to use these themes.")
     packageStartupMessage("      Please use ktheme::import_open_sans() to install Open Sans and")
     packageStartupMessage("      please use ktheme::import_figtree() to install Figtree and")
