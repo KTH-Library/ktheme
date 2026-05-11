@@ -26,19 +26,19 @@ profile](https://intra.kth.se/en/administration/kommunikation/grafiskprofil)
 It includes fonts in the two main font families used in the graphical
 profile of KTH:
 
-- Figtree (SIL-licensed font)
-- Open Sans (used to be the primary font; to be used for web content and
-  for text inside plots)
-- Open Sans Condensed is a narrow variant of Open Sans (looks even
-  better in plots)
-- Georgia (KTH has a license to use this MS font)
+  - Figtree (SIL-licensed font)
+  - Open Sans (used to be the primary font; to be used for web content
+    and for text inside plots)
+  - Open Sans Condensed is a narrow variant of Open Sans (looks even
+    better in plots)
+  - Georgia (KTH has a license to use this MS font)
 
 ### Templates for rmarkdown content
 
 Two templates are provided for styling `rmarkdown` authored content:
 
-- one for general HTML content with the KTH CSS styles
-- one for PDF output
+  - one for general HTML content with the KTH CSS styles
+  - one for PDF output
 
 ### Theme for ggplot2
 
@@ -77,9 +77,9 @@ library(Cairo)
 
 # Color palettes
 
-Three color palettes are provided; the new standard “kth_palette_neo()”,
-the previous standard “kth_palette()” and the previous
-“kth_palette_digital()” palette.
+Three color palettes are provided; the new standard
+“kth\_palette\_neo()”, the previous standard “kth\_palette()” and
+the previous “kth\_palette\_digital()” palette.
 
 Palettes take their starting point in a set of colors used (at different
 points in time), currently originating from the [KTH signature
@@ -88,20 +88,21 @@ colors](https://intra.kth.se/en/administration/kommunikation/grafiskprofil/profi
 These color palette can be used to color qualitative data, sequential
 data and diverging data.
 
-- qualitative palette for use with nominal or unordered categorical
-  values (using the primary KTH profile color (blue), followed by
-  profile colors, each color available in triplets (darker tone, lighter
-  tone, medium tone), thus providing a total of 6 x 3 = 18 colors)
-- sequential palette for quantitative magnitudes - high/low values - or
-  for ordered categorical data (the “kth_palette” variant uses the
-  primary color in 5 stepped variations - from the strongest tone
-  stepping towards a neutral gray)
-- diverging palette for use with quantitative values centered around
-  some point - or centered ordered categorical data of that same nature
-  (the primary color is used on one end of the palette and the closest
-  complement color on the other to provide a 7-color palette with three
-  steps of blue towards a gray midpoint and three steps of red away from
-  that midpoint)
+  - qualitative palette for use with nominal or unordered categorical
+    values (using the primary KTH profile color (blue), followed by
+    profile colors, each color available in triplets (darker tone,
+    lighter tone, medium tone), thus providing a total of 6 x 3 = 18
+    colors)
+  - sequential palette for quantitative magnitudes - high/low values -
+    or for ordered categorical data (the “kth\_palette” variant uses the
+    primary color in 5 stepped variations - from the strongest tone
+    stepping towards a neutral gray)
+  - diverging palette for use with quantitative values centered around
+    some point - or centered ordered categorical data of that same
+    nature (the primary color is used on one end of the palette and the
+    closest complement color on the other to provide a 7-color palette
+    with three steps of blue towards a gray midpoint and three steps of
+    red away from that midpoint)
 
 ## Standard KTH palette
 
