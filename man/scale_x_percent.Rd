@@ -158,9 +158,9 @@ want to do that). \code{NULL} means no labels.}
 \item{guide}{axis guide; default \code{waiver()} uses ggplot2's standard guide}
 
 \item{accuracy, scale, prefix, suffix, big.mark, decimal.mark, trim}{See
-\code{\link[scales:comma]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}
+\code{\link[scales:comma_format]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}
 
-\item{...}{passed on to \code{\link[scales:comma]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}
+\item{...}{passed on to \code{\link[scales:comma_format]{scales::comma_format()}} or \code{\link[scales:percent_format]{scales::percent_format()}}}
 }
 \description{
 The \verb{_comma} ones set comma format for axis text and \code{expand=c(0,0)} (you need to set limits).

@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-kth.R
 \name{theme_kth}
 \alias{theme_kth}
-\title{A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile.}
+\title{A \link[ggplot2:ggplot2]{ggplot2} theme with default for the KTH graphical profile.}
 \usage{
 theme_kth(
   base_family = "Open Sans",
@@ -55,7 +55,7 @@ theme_kth(
 
 \item{axis_title_just}{axis title font justification, one of \verb{[blmcrt]}}
 
-\item{plot_margin}{plot margin (specify with \code{\link[ggplot2:element]{ggplot2::margin()}})}
+\item{plot_margin}{plot margin (specify with \code{\link[ggplot2:margin]{ggplot2::margin()}})}
 
 \item{grid_col, axis_col}{grid & axis colors; both default to \verb{#cccccc}}
 
@@ -68,7 +68,7 @@ theme_kth(
 \item{fontscale_factor}{scaling factor for font sizes, by default 1}
 }
 \description{
-A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile.
+A \link[ggplot2:ggplot2]{ggplot2} theme with default for the KTH graphical profile.
 }
 \examples{
 \dontrun{

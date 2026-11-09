@@ -34,7 +34,6 @@ Imports:
     htmltools,
     tools,
     magrittr,
-    gdtools,
     purrr,
     tidyr,
     dplyr,
@@ -42,5 +41,5 @@ Imports:
     farver,
     hunspell
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 VignetteBuilder: knitr
+Config/roxygen2/version: 8.1.1
