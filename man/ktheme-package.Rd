@@ -13,6 +13,7 @@ The core themes: \code{theme_kth_neo} uses Figtree and \code{theme_kth} uses Ope
 
 Authors:
 \itemize{
+  \item Markus Skyttner \email{markussk@kth.se}
   \item Gaël Serge Dubus \email{dubus@kth.se}
   \item Tobias Jeppson \email{tjejp@kth.se}
   \item Agne Larsson \email{agnel@kth.se}

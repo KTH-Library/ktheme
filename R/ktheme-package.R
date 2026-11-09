@@ -5,7 +5,6 @@
 #' @import ggplot2 grid scales grDevices
 #' @importFrom systemfonts system_fonts
 #' @importFrom magrittr %>%
-#' @importFrom gdtools set_dummy_conf
 #' @import rmarkdown knitr htmltools
 #' @importFrom tools file_path_sans_ext
 "_PACKAGE"

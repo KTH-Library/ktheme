@@ -2,7 +2,7 @@
 % Please edit documentation in R/theme-kth.R
 \name{theme_kth_neo}
 \alias{theme_kth_neo}
-\title{A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile using the Figtree font .}
+\title{A \link[ggplot2:ggplot2]{ggplot2} theme with default for the KTH graphical profile using the Figtree font .}
 \usage{
 theme_kth_neo(
   base_family = "Figtree Light",
@@ -28,7 +28,7 @@ theme_kth_neo(
 \item{fontscale_factor}{the font scaling factor used, by default 1.0}
 
 \item{...}{
-  Arguments passed on to \code{\link[=theme_kth]{theme_kth}}
+  Arguments passed on to \code{\link{theme_kth}}
   \describe{
     \item{\code{base_family,base_size}}{base font family and size}
     \item{\code{plot_title_family,plot_title_face,plot_title_size,plot_title_margin}}{plot title family, face, size and margi}
@@ -38,7 +38,7 @@ theme_kth_neo(
     \item{\code{caption_family,caption_face,caption_size,caption_margin}}{plot caption family, face, size and margin}
     \item{\code{axis_title_family,axis_title_face,axis_title_size}}{axis title font family, face and size}
     \item{\code{axis_title_just}}{axis title font justification, one of \verb{[blmcrt]}}
-    \item{\code{plot_margin}}{plot margin (specify with \code{\link[ggplot2:element]{ggplot2::margin()}})}
+    \item{\code{plot_margin}}{plot margin (specify with \code{\link[ggplot2:margin]{ggplot2::margin()}})}
     \item{\code{grid_col,axis_col}}{grid & axis colors; both default to \verb{#cccccc}}
     \item{\code{grid}}{panel grid (\code{TRUE}, \code{FALSE}, or a combination of \code{X}, \code{x}, \code{Y}, \code{y})}
     \item{\code{axis_text_size}}{font size of axis text}
@@ -47,5 +47,5 @@ theme_kth_neo(
   }}
 }
 \description{
-A \link[ggplot2:ggplot2-package]{ggplot2::ggplot2} theme with default for the KTH graphical profile using the Figtree font .
+A \link[ggplot2:ggplot2]{ggplot2} theme with default for the KTH graphical profile using the Figtree font .
 }
